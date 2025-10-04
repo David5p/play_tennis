@@ -1,1 +1,1 @@
-web: gunicorn tennis.wsgi:application
+web: gunicorn tennis.wsgi
