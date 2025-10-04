@@ -11,6 +11,19 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+import dj_database_url
+if os.path.exists("env.py"):
+    import env
+
+
+os.environ.setdefault(
+    "DATABASE_URL",
+    "postgresql://neondb_owner:npg_eFkqErcl25jh@ep-holy-thunder-ag0qpmvr.c-2.eu-central-1.aws.neon.tech/proof_flirt_rack_295972"
+)
+
+os.environ.setdefault("SECRET_KEY", "django-insecure-r2dp%4qvcddpjs3!ndeoan!xl34^h)%!&164bb3c%ezpa^0d0d")
+os.environ.setdefault("DEBUG", "False")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,7 +36,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-r2dp%4qvcddpjs3!ndeoan!xl34^h)%!&164bb3c%ezpa^0d0d'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.herokuapp.com']
 
@@ -73,13 +86,15 @@ WSGI_APPLICATION = 'tennis.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
