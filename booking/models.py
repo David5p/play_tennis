@@ -6,12 +6,17 @@ class Court (models.Model):
         ('indoor', 'Indoor'),
         ('outdoor', 'Outdoor'),
     ]
+    SURFACE_CHOICES = [
+        ('clay', 'Clay'),
+        ('hard', 'Hard'),
+    ]
 
     name = models.CharField(max_length=100)
     court_type = models.CharField(max_length=10, choices=COURT_TYPE_CHOICES)
+    surface_type = models.CharField(max_length=10, choices=SURFACE_CHOICES, default = 'hard')
 
     def __str__(self):
-        return f"{self.name} ({self.get_court_type_display()})"
+        return f"{self.name} ({self.get_court_type_display()}) - ({self.get_surface_type_display()})"
 
 class Booking(models.Model):
     court = models.ForeignKey(Court, on_delete=models.CASCADE, related_name='bookings')
