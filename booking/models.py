@@ -39,5 +39,27 @@ class Booking(models.Model):
     end_time = models.TimeField()
     created_at = models.DateTimeField(auto_now_add=True)
     
+    def clean(self):
+        """Validation for time order and overlap prevention"""
+        #Ensures end time is after start time
+        if self.end_time <= self.start_time:
+            raise ValidationError("End time must be after start time.")
+        
+        # Prevent overlapping bookings
+        overlapping = Booking.objects.filter(
+            court=self.court,
+            date=self.date,
+            start_time__lt=self.end_time,
+            end_time__gt=self.start_time,
+        ).exclude(id=self.id)
+
+        if overlapping.exists():
+            raise ValidationError("This court is already booked for that time slot.")
+    
+    def save(self, *args, **kwargs):
+        """Ensure validation runs before saving"""
+        self.full_clean()  # runs clean() before saving
+        super().save(*args, **kwargs)
+
     def __str__(self):
         return f"{self.name} - {self.court.name} on {self.date} from {self.start_time} to {self.end_time}"
