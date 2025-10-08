@@ -8,16 +8,18 @@ from pathlib import Path
 import os
 import dj_database_url
 
-# ✅ Load local environment variables if env.py exists
+# Load local environment variables if env.py exists
 if os.path.exists("env.py"):
     import env
 
 # Base directory
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# ✅ Security settings
+# Security settings
 SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
+DEBUG_PROPAGATE_EXCEPTIONS = True
+
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.herokuapp.com']
 
