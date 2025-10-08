@@ -1,7 +1,9 @@
 from django.db import models
 from django.core.exceptions import ValidationError
+from datetime import time
 
 # Create your models here.
+
 class Court (models.Model):
     COURT_TYPE_CHOICES = [
         ('indoor', 'Indoor'),
@@ -17,12 +19,12 @@ class Court (models.Model):
     surface_type = models.CharField(max_length=10, choices=SURFACE_CHOICES, default = 'hard')
 
     def clean(self):
-        "Custom validation to prevent clay courts from being indoor"
+        """Custom validation to prevent clay courts from being indoor"""
         if self.court_type == 'indoor' and self.surface_type == 'clay':
             raise ValidationError("Indoor courts are hard courts only.")
     
     def save(self, *args, **kwargs):
-        "Ensure validation runs before saving"
+        """Ensure validation runs before saving"""
         self.full_clean()  # ensures clean() runs before saving
         super().save(*args, **kwargs)
 
@@ -40,22 +42,56 @@ class Booking(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     
     def clean(self):
-        """Validation for time order and overlap prevention"""
-        #Ensures end time is after start time
+        """Run all validation checks for a booking"""
+        super().clean()
+        self._validate_time_on_the_hour()
+        self._validate_time_order()
+        self._validate_opening_hours()
+        self._validate_outdoor_availability()
+        self._validate_no_overlap()
+
+    def _validate_time_on_the_hour(self):
+        """Ensure booking times are on the hour"""
+        if self.start_time.minute != 0 or self.start_time.second != 0:
+            raise ValidationError("Start time must be on the hour (e.g., 8:00, 9:00).")
+        if self.end_time.minute != 0 or self.end_time.second != 0:
+            raise ValidationError("End time must be on the hour (e.g., 9:00, 10:00).")
+
+    def _validate_time_order(self):
+        """Ensures end time is after start time"""
         if self.end_time <= self.start_time:
             raise ValidationError("End time must be after start time.")
-        
-        # Prevent overlapping bookings
+
+    def _validate_opening_hours(self):
+        """Opening hours of venue"""
+        opening_time = time(7, 0)
+        closing_time = time(21, 0)
+        if not (opening_time <= self.start_time <
+closing_time):
+            raise ValidationError("Bookings can only start between 7:00 and 21:00.")
+        if not (opening_time < self.end_time <= closing_time):
+            raise ValidationError("Bookings can only end between 7:00 and 21:00.")
+
+    def _validate_outdoor_availability(self):
+        """Block courts for bookings in winter"""
+        if self.court.court_type == 'outdoor' and self.date.month in [12, 1, 2, 3]:
+            raise ValidationError("Outdoor courts are closed from December to March.")
+
+    def _validate_no_overlap(self):
+        """Prevent double bookings"""
         overlapping = Booking.objects.filter(
             court=self.court,
             date=self.date,
             start_time__lt=self.end_time,
-            end_time__gt=self.start_time,
-        ).exclude(id=self.id)
+            end_time__gt=self.start_time
+        )
+        # Exclude the current booking when editing an existing one
+        if self.pk:
+            overlapping = overlapping.exclude(pk=self.pk)
 
         if overlapping.exists():
             raise ValidationError("This court is already booked for that time slot.")
-    
+
     def save(self, *args, **kwargs):
         """Ensure validation runs before saving"""
         self.full_clean()  # runs clean() before saving

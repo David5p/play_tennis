@@ -7,6 +7,6 @@ class BookingForm(forms.ModelForm):
         fields = ['court', 'name', 'email', 'date', 'start_time', 'end_time']
         widget = {
             'date': forms.DateInput(attrs={'type': 'date'}), 
-            'start_time': forms.TimeInput(attrs={'type': 'time'}),
-            'end_time': forms.TimeInput(attrs={'type': 'time'}),
+            'start_time': forms.TimeInput(attrs={'type': 'time', 'step': 3600}),
+            'end_time': forms.TimeInput(attrs={'type': 'time','step': 3600}),
         }
