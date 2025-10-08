@@ -9,10 +9,11 @@ def create_booking(request):
         form = BookingForm(request.POST)
         if form.is_valid():
             form.save()
-            message.success(request, "Your booking was successful!")
+            messages.success(request, "Your booking was successful!")
             return redirect('create_booking')
     else:
         form = BookingForm()
-        return render(request, 'booking/create_booking.html',{'form': form})
+    
+    return render(request, 'booking/create_booking.html',{'form': form})
 
 
