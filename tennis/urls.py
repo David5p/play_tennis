@@ -18,8 +18,10 @@ from django.contrib import admin
 from django.urls import path, include
 from booking import views as booking_views
 from django.contrib.auth import views as auth_views
+from . import views
 
 urlpatterns = [
+    path('', views.home, name = 'home'),
     path('admin/', admin.site.urls),
     path('booking/', include('booking.urls')),  # link to booking app
     path('accounts/', include('django.contrib.auth.urls')),  # login/logout

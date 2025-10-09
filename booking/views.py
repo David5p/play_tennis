@@ -7,6 +7,9 @@ from django.contrib.auth import login
 
 
 
+def home(request):
+    return render(request, 'home.html')
+
 def create_booking(request):
     if request.method == 'POST':
         form = BookingForm(request.POST)

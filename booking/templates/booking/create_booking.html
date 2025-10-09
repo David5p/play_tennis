@@ -1,12 +1,9 @@
+{% extends "base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Book a Court</title>
-    <link rel="stylesheet" href="{% static 'booking/css/style.css' %}">
-</head>
-<body class="booking-page">
+
+{% block title %}Book a Court{% endblock %}
+
+{% block content %}
     <h1 class="page-title">Book a Court</h1>
 
     {% if messages %}
@@ -20,6 +17,6 @@
         {{ form.as_p }}
         <button type="submit" class="btn btn-primary">Book Now</button>
     </form>
+
     <script src="{% static 'booking/booking.js' %}"></script>
-</body>
-</html>
+{% endblock %}
