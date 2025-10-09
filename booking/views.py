@@ -2,6 +2,8 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import BookingForm
+from django.contrib.auth.forms import UserCreationForm
+
 
 
 def create_booking(request):
