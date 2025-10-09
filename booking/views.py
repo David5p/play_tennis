@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import BookingForm
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login
 
 
 
@@ -24,7 +25,7 @@ def register(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('home')
+            return redirect('login')
     else:
         form = UserCreationForm()
     return render(request, 'registration/signup.html', {'form': form})
