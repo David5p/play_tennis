@@ -1,18 +1,14 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Home - Play Tennis{% endblock %}
 
 {% block content %}
-<div class="text-center mt-5">
-    <h1 class="display-4">Welcome to <strong>Play Tennis</strong> 🎾</h1>
-    <p class="lead mt-3">Book your tennis court and start playing today.</p>
-
-    {% if user.is_authenticated %}
-        <a href="{% url 'create_booking' %}" class="btn btn-primary mt-4">Make a Booking</a>
-    {% else %}
-        <a href="{% url 'login' %}" class="btn btn-outline-primary mt-4 me-2">Login</a>
-        <a href="{% url 'register' %}" class="btn btn-primary mt-4">Register</a>
-    {% endif %}
+<div class="hero-section text-white d-flex flex-column justify-content-center align-items-center">
+  <div class="container text-center">
+    <h1 class="display-3 fw-bold">Welcome to <span class="text-warning">Play Tennis</span></h1>
+    <p class="lead">Book your tennis court and start playing today.</p>
+    <a href="{% url 'create_booking' %}" class="btn btn-primary mt-3">Make a Booking</a>
+  </div>
 </div>
 {% endblock %}
-
