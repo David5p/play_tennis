@@ -1,16 +1,28 @@
 {% extends "base.html" %}
 
+{% load crispy_forms_tags %}  {# Load crispy form tags #}
+
+{% block title %}Play Tennis Signup{% endblock %}
+
 {% block content %}
-  {% if messages %}
-    <ul>
-      {% for message in messages %}
-        <li>{{ message }}</li>
-      {% endfor %}
-    </ul>
-  {% endif %}
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Sign Up</button>
-</form>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h1 class="text-center display-5 mb-4">Sign Up to <strong>Play Tennis</strong> 🎾</h1>
+            <p class="lead text-center">Create an account to manage your court bookings.</p>
+
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+
+            <form method="post" novalidate>
+                {% csrf_token %}
+                {{ form|crispy }}  {# Uses crispy forms layout #}
+                <button class="btn btn-primary w-100 mt-3" type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}
