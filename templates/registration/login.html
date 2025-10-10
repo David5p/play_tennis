@@ -1,10 +1,26 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Play Tennis Login{% endblock %}
 
 {% block content %}
-  <h2>Login</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
-  </form>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h2 class="text-center mb-4">Login to <strong>Play Tennis</strong> 🎾</h2>
+
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+
+      <form method="post" novalidate>
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button class="btn btn-primary w-100 mt-3" type="submit">Login</button>
+      </form>
+    </div>
+  </div>
+</div>
 {% endblock %}
