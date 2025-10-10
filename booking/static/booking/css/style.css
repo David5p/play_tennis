@@ -9,6 +9,8 @@
   justify-content: center;
   align-items: center;
   color: white;
+  text-align: center;
+  overflow: hidden;
 }
 
 .hero-section::before {
@@ -18,11 +20,22 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* dark overlay for text visibility */
+  background-color: rgba(0, 0, 0, 0.45); /* dark overlay for text visibility */
+  backdrop-filter: brightness(0.9);
   z-index: 0;
 }
 
 .hero-section .container {
   position: relative;
   z-index: 1;
+}
+.start-title {
+  color: rgba(183, 206, 180);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.45);
+  font-weight: 600;
+}
+.title {
+  color: rgba(232, 232, 232);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.55);
+  font-weight: 700;
 }
