@@ -39,3 +39,11 @@
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.55);
   font-weight: 700;
 }
+#about {
+  background-color: rgba(196, 217, 222, 0.8);
+}
+.info {
+  color: #2c3539;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
