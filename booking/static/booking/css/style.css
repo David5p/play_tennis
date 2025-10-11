@@ -1,3 +1,10 @@
+:root {
+  --font-primary: "Bebas Neue", cursive; /*titles and headings*/
+  --font-secondary: "Roboto", sans-serif; /*paragraphs*/
+  --color-text-heading: white;
+  --color-text-main: #2c3539;
+}
+
 .hero-section {
   position: relative;
   background-image: url("../images/main_image.jpg"); /* path relative to your CSS file */
@@ -30,20 +37,24 @@
   z-index: 1;
 }
 .start-title {
+  font-family: var(--font-secondary);
   color: rgba(183, 206, 180);
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.45);
   font-weight: 600;
 }
 .title {
+  font-family: var(--font-secondary);
   color: rgba(232, 232, 232);
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.55);
   font-weight: 700;
 }
 #about {
+  font-family: var(--font-secondary);
   background-color: rgba(196, 217, 222, 0.8);
 }
 .info {
-  color: #2c3539;
+  font-family: var(--font-Primary);
+  color: var(--color-text-main);
   font-size: 1.25rem;
   font-weight: bold;
 }
