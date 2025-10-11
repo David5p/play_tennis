@@ -26,6 +26,7 @@
         <nav>
             <a href="{% url 'home' %}" class="text-white me-3">Home</a>
             <a href="{% url 'create_booking' %}" class="text-white me-3">Book</a>
+            <a href= "about" class="text-white me-3">About</a>
             {% if user.is_authenticated %}
                 <span class="me-3">Welcome, {{ user.username }}</span>
                 <a href="{% url 'logout' %}" class="btn btn-sm btn-outline-light">Logout</a>
