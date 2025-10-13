@@ -58,3 +58,8 @@
   font-size: 1.25rem;
   font-weight: bold;
 }
+.container#register {
+  background-color: rgba(196, 217, 222, 0.8);
+  padding: 2rem;
+  border-radius: 0.5rem;
+}
