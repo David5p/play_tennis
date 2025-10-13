@@ -1,3 +1,7 @@
+body {
+  background-color: pink !important;
+}
+
 :root {
   --font-primary: "Bebas Neue", cursive; /*titles and headings*/
   --font-secondary: "Roboto", sans-serif; /*paragraphs*/
@@ -58,7 +62,7 @@
   font-size: 1.25rem;
   font-weight: bold;
 }
-.container#register {
+#register {
   background-color: rgba(196, 217, 222, 0.8);
   padding: 2rem;
   border-radius: 0.5rem;
