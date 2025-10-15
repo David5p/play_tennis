@@ -4,17 +4,21 @@ from django.contrib import messages
 from .forms import BookingForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
 
-
-
+@login_required(login_url='login') #return to login page if not logged in 
 def home(request):
     return render(request, 'home.html')
 
+
+@login_required(login_url='login') #Only logged in users can create a booking
 def create_booking(request):
     if request.method == 'POST':
         form = BookingForm(request.POST)
         if form.is_valid():
-            form.save()
+            booking = form.save(commit=False)
+            booking.user = request.user # Link booking to the logged in user
+            booking.save()
             messages.success(request, "Your booking was successful!")
             return redirect('create_booking')
     else:
@@ -28,7 +32,7 @@ def register(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('login')
+            return redirect('home')
     else:
         form = UserCreationForm()
     return render(request, 'registration/signup.html', {'form': form})
