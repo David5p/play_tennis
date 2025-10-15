@@ -1,7 +1,3 @@
-body {
-  background-color: pink !important;
-}
-
 :root {
   --font-primary: "Bebas Neue", cursive; /*titles and headings*/
   --font-secondary: "Roboto", sans-serif; /*paragraphs*/
@@ -9,9 +5,13 @@ body {
   --color-text-main: #2c3539;
 }
 
+body {
+  font-family: var(--font-secondary);
+}
+
 .hero-section {
   position: relative;
-  background-image: url("../images/main_image.222f4a3e65be.jpg"); /* path relative to your CSS file */
+  background-image: url("../images/main_image.jpg"); /* path relative to your CSS file */
   background-size: cover;
   background-position: center;
   height: 60vh;

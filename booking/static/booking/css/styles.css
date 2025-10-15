@@ -1,12 +1,14 @@
-body {
-  background-color: pink !important;
-}
-
 :root {
   --font-primary: "Bebas Neue", cursive; /*titles and headings*/
   --font-secondary: "Roboto", sans-serif; /*paragraphs*/
   --color-text-heading: white;
   --color-text-main: #2c3539;
+}
+
+body {
+  font-family: var(--font-secondary);
+  color: var(--color-text-main);
+  font-size: 1.25rem;
 }
 
 .hero-section {
@@ -40,6 +42,9 @@ body {
   position: relative;
   z-index: 1;
 }
+h1 {
+  font-family: var(--font-Primary);
+}
 .start-title {
   font-family: var(--font-secondary);
   color: rgba(183, 206, 180);
@@ -62,7 +67,9 @@ body {
   font-size: 1.25rem;
   font-weight: bold;
 }
-#register {
+#register,
+#login,
+#court_booking {
   background-color: rgba(196, 217, 222, 0.8);
   padding: 2rem;
   border-radius: 0.5rem;
