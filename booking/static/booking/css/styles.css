@@ -11,6 +11,12 @@ body {
   font-size: 1.25rem;
 }
 
+header#navbar {
+  background-color: rgba(24, 93, 106, 1) !important;
+  position: relative;
+  z-index: 10;
+}
+
 .hero-section {
   position: relative;
   background-image: url("../images/main_image.jpg"); /* path relative to your CSS file */
@@ -43,7 +49,7 @@ body {
   z-index: 1;
 }
 h1 {
-  font-family: var(--font-Primary);
+  font-family: var(--font-primary);
 }
 .start-title {
   font-family: var(--font-secondary);
@@ -62,7 +68,7 @@ h1 {
   background-color: rgba(196, 217, 222, 0.8);
 }
 .info {
-  font-family: var(--font-Primary);
+  font-family: var(--font-primary);
   color: var(--color-text-main);
   font-size: 1.25rem;
   font-weight: bold;
