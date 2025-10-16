@@ -7,6 +7,14 @@
 
 body {
   font-family: var(--font-secondary);
+  color: var(--color-text-main);
+  font-size: 1.25rem;
+}
+
+header#navbar {
+  background-color: rgba(24, 93, 106, 1) !important;
+  position: relative;
+  z-index: 10;
 }
 
 .hero-section {
@@ -40,6 +48,9 @@ body {
   position: relative;
   z-index: 1;
 }
+h1 {
+  font-family: var(--font-primary);
+}
 .start-title {
   font-family: var(--font-secondary);
   color: rgba(183, 206, 180);
@@ -57,13 +68,32 @@ body {
   background-color: rgba(196, 217, 222, 0.8);
 }
 .info {
-  font-family: var(--font-Primary);
+  font-family: var(--font-secondary);
   color: var(--color-text-main);
   font-size: 1.25rem;
   font-weight: bold;
 }
-#register {
+#register,
+#login,
+#court_booking {
   background-color: rgba(196, 217, 222, 0.8);
   padding: 2rem;
   border-radius: 0.5rem;
+}
+
+a.home-button {
+  display: inline-block;
+  background-color: rgba(24, 93, 106, 1);
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s ease-in-out;
+}
+
+a.home-button:hover {
+  background-color: rgba(31, 120, 137, 1);
+  color: #fff;
 }
