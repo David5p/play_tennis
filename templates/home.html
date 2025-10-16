@@ -1,31 +1,31 @@
-{% extends "base.html" %}
-{% load static %}
+  {% extends "base.html" %}
+  {% load static %}
 
-{% block title %}Home - Play Tennis{% endblock %}
+  {% block title %}Home - Play Tennis{% endblock %}
 
-{% block content %}
-<div class="hero-section text-white d-flex flex-column justify-content-center align-items-center">
-  <div class="container text-center">
-    <h1 class="display-3 fw-bold start-title">Welcome to Harton <span class="title">Play Tennis</span></h1>
-    <section class="opening"><p class="lead">Book your tennis court and start playing today.</p>
-    <a href="{% url 'create_booking' %}" class="general-button">Make a Booking</a>
-    </section>
-</div>
-</div>
-<section id="about" class="about-section py-5 text-center">
-  <div class="container">
-    <h2 class="mb-4 display-4"><strong>About Us</strong></h2>
-    <p class="lead info text-muted mx-auto" style="max-width: 900px;">
-      Welcome to Harton Play Tennis! As a historic tennis club steeped in history, we are passionate about helping players of all levels
-      find courts, connect with others, and enjoy the game. Whether you’re just starting
-      out or a seasoned competitor, we make booking and playing simple.
-      Having produced numerous top 300 players in the world over the past century, we know our club can set you on the path to success.
-      Our club is also a place to have fun with friends and provides ample opportunities to players of all levels to make new ones.
-      With the development of our indoor courts, we truly are a tennis club which operates for the whole year and not just the summer
-      season.
-      Whilst the weather allows, you can choose whether to perfect your game on our outdoor hard courts or put your
-      sliding skills to the test on the red clay. There really is something for everyone!
-    </p>
+  {% block content %}
+  <div class="hero-section text-white d-flex flex-column justify-content-center align-items-center">
+    <div class="container text-center">
+      <h1 class="display-3 fw-bold start-title">Welcome to Harton <span class="title">Play Tennis</span></h1>
+      <section class="opening"><p class="lead">Book your tennis court and start playing today.</p>
+      <a href="{% url 'create_booking' %}" class="general-button">Make a Booking</a>
+      </section>
   </div>
-</section>
-{% endblock %}
+  </div>
+  <section id="about" class="about-section py-5 text-center">
+    <div class="container">
+      <h2 class="mb-4 display-4"><strong>About Us</strong></h2>
+      <p class="lead info text-muted mx-auto" style="max-width: 900px;">
+        Welcome to Harton Play Tennis! As a historic tennis club steeped in history, we are passionate about helping players of all levels
+        find courts, connect with others, and enjoy the game. Whether you’re just starting
+        out or a seasoned competitor, we make booking and playing simple.
+        Having produced numerous top 300 players in the world over the past century, we know our club can set you on the path to success.
+        Our club is also a place to have fun with friends and provides ample opportunities to players of all levels to make new ones.
+        With the development of our indoor courts, we truly are a tennis club which operates for the whole year and not just the summer
+        season.
+        Whilst the weather allows, you can choose whether to perfect your game on our outdoor hard courts or put your
+        sliding skills to the test on the red clay. There really is something for everyone!
+      </p>
+    </div>
+  </section>
+  {% endblock %}

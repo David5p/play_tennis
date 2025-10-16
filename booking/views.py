@@ -5,6 +5,9 @@ from .forms import BookingForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
+from .models import Booking
+from django.utils import timezone
+
 
 def home(request):
     return render(request, 'home.html')
@@ -35,3 +38,13 @@ def register(request):
     else:
         form = UserCreationForm()
     return render(request, 'registration/signup.html', {'form': form})
+
+@login_required(login_url='login')
+def my_bookings(request):
+    today = timezone.now().date()
+    upcoming = Booking.objects.filter(user=request.user, date__gte =today).order_by('date')
+    past = Booking.objects.filter(user=request.user, date__lt =today).order_by('-date')
+    return render(request, 'booking/my_bookings.html', {
+        'upcoming': upcoming,
+        'past': past
+    })

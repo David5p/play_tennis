@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 from datetime import time
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -33,6 +34,7 @@ class Court (models.Model):
         return f"{self.name} ({self.get_court_type_display()}) - ({self.get_surface_type_display()})"
 
 class Booking(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     court = models.ForeignKey(Court, on_delete=models.CASCADE, related_name='bookings')
     name = models.CharField(max_length=100)
     email = models.EmailField()
