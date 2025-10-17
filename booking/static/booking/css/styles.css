@@ -10,11 +10,6 @@ body {
   color: var(--color-text-main);
   font-size: 1.25rem;
 }
-/* Force the toggler to always show on small screens */
-.navbar-toggler {
-  display: block !important;
-  z-index: 1050; /* above other elements */
-}
 
 header#navbar {
   background-color: rgba(24, 93, 106, 1) !important;
