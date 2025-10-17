@@ -25,14 +25,13 @@
   <nav class="navbar navbar-expand-md">
     <div class="container d-flex align-items-center">
 
-      <!-- Brand on the left -->
+      <!-- Brand -->
       <a class="navbar-brand text-white me-3" href="{% url 'home' %}">
         <h1 class="h4 mb-0 text-white">Play Tennis</h1>
       </a>
 
-      <!-- Toggler button for small screens -->
-      <button class="navbar-toggler border-0 bg-transparent text-white"
-              type="button"
+      <!-- Toggler -->
+      <button class="navbar-toggler border-0 bg-transparent text-white" type="button"
               data-bs-toggle="collapse"
               data-bs-target="#navbarMenu"
               aria-controls="navbarMenu"
@@ -44,20 +43,17 @@
       <!-- Collapsible menu -->
       <div class="collapse navbar-collapse" id="navbarMenu">
         <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item"><a class="nav-link text-white" href="{% url 'home' %}">Home</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="{% url 'create_booking' %}">Book</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="{% url 'home' %}#about">About</a></li>
 
-          <!-- Menu items -->
-          <li class="nav-item"><a href="{% url 'home' %}" class="nav-link text-white">Home</a></li>
-          <li class="nav-item"><a href="{% url 'create_booking' %}" class="nav-link text-white">Book</a></li>
-          <li class="nav-item"><a href="{% url 'home' %}#about" class="nav-link text-white">About</a></li>
-
-          <!-- Auth buttons -->
           {% if user.is_authenticated %}
-            <li class="nav-item"><a href="{% url 'my_bookings' %}" class="nav-link text-white">My Bookings</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="{% url 'my_bookings' %}">My Bookings</a></li>
             <li class="nav-item"><span class="nav-link text-white">Welcome, {{ user.username }}</span></li>
-            <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link user-button">Logout</a></li>
+            <li class="nav-item"><a class="nav-link user-button" href="{% url 'logout' %}">Logout</a></li>
           {% else %}
-            <li class="nav-item"><a href="{% url 'login' %}" class="nav-link user-button">Login</a></li>
-            <li class="nav-item"><a href="{% url 'register' %}" class="nav-link register-button">Register</a></li>
+            <li class="nav-item"><a class="nav-link user-button" href="{% url 'login' %}">Login</a></li>
+            <li class="nav-item"><a class="nav-link register-button" href="{% url 'register' %}">Register</a></li>
           {% endif %}
 
         </ul>
