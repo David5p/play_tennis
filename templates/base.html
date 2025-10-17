@@ -10,7 +10,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom CSS to enable cache busting -->
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'booking/css/styles.css' %}">
 
     <!-- Favicons -->
@@ -20,44 +20,64 @@
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}" />
     <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}" />
 </head>
-<body>
-<header id="navbar" class="text-white p-3">
-  <div class="container d-flex align-items-center">
+<body><header id="navbar" class="text-white p-3">
+  <nav class="navbar navbar-expand-md">
+    <div class="container d-flex align-items-center">
 
-    <!-- Brand -->
-    <a href="{% url 'home' %}" class="text-decoration-none me-3">
-      <h1 class="h4 mb-0 text-white">Play Tennis</h1>
-    </a>
+      <!-- Brand -->
+      <a href="{% url 'home' %}" class="navbar-brand text-white me-3">
+        <h1 class="h4 mb-0 text-white">Play Tennis</h1>
+      </a>
 
-    <!-- Toggler button for medium and small screens -->
-    <button class="navbar-toggler d-md-none border-0 bg-transparent text-white ms-auto"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarMenu"
-            aria-controls="navbarMenu"
-            aria-expanded="false"
-            aria-label="Toggle navigation">
-      <span class="fs-3">☰</span>
-    </button>
+      <!-- Toggler button for medium and small screens -->
+      <button class="navbar-toggler border-0 bg-transparent text-white"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarMenu"
+              aria-controls="navbarMenu"
+              aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="fs-3">☰</span>
+      </button>
 
-    <!-- Collapsible navbar -->
-    <nav id="navbarMenu" class="collapse d-md-flex flex-md-row align-items-center ms-auto mt-2 mt-md-0">
-      <a href="{% url 'home' %}" class="text-white me-3 mt-2 mt-md-0">Home</a>
-      <a href="{% url 'create_booking' %}" class="text-white me-3 mt-2 mt-md-0">Book</a>
-      <a href="{% url 'home' %}#about" class="text-white me-3 mt-2 mt-md-0">About</a>
+      <!-- Collapsible navbar -->
+      <div class="collapse navbar-collapse ms-auto" id="navbarMenu">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item">
+            <a href="{% url 'home' %}" class="nav-link text-white">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'create_booking' %}" class="nav-link text-white">Book</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'home' %}#about" class="nav-link text-white">About</a>
+          </li>
 
-      {% if user.is_authenticated %}
-        <a href="{% url 'my_bookings' %}" class="text-white me-3 mt-2 mt-md-0">My Bookings</a>
-        <span class="me-3">Welcome, {{ user.username }}</span>
-        <a href="{% url 'logout' %}" class="user-button mt-2 mt-md-0">Logout</a>
-      {% else %}
-        <a href="{% url 'login' %}" class="user-button mt-2 mt-md-0">Login</a>
-        <a href="{% url 'register' %}" class="register-button mt-2 mt-md-0">Register</a>
-      {% endif %}
-    </nav>
+          {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a href="{% url 'my_bookings' %}" class="nav-link text-white">My Bookings</a>
+            </li>
+            <li class="nav-item">
+              <span class="nav-link text-white">Welcome, {{ user.username }}</span>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'logout' %}" class="nav-link user-button">Logout</a>
+            </li>
+          {% else %}
+            <li class="nav-item">
+              <a href="{% url 'login' %}" class="nav-link user-button">Login</a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'register' %}" class="nav-link register-button">Register</a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
 
-  </div>
+    </div>
+  </nav>
 </header>
+
 
 <main class="container mt-4">
     {% if messages %}
