@@ -23,26 +23,38 @@
 <body>
 
 <header id = "navbar" class= "text-white p-3">
-    <div class="container d-flex justify-content-between align-items-center">
-<a href="{% url 'home' %}" class="text-decoration-none">
+    <div class = "container d-flex align-items-center">
+<a href="{% url 'home' %}" class="text-decoration-none me-3">
       <h1 class="h4 mb-0 text-white">Play Tennis</h1>
     </a>
-    <nav>
-            <a href="{% url 'home' %}" class="text-white me-3">Home</a>
-            <a href="{% url 'create_booking' %}" class="text-white me-3">Book</a>
-            <a href= "{% url 'home' %}#about" class="text-white me-3">About</a>
+ <div class="d-flex align-items-center ms-auto">
+    <nav id = "navbarMenu" class = "collapse d-md-flex flex-md-row align-items-center mt-2 mt-md-0">
+            <a href="{% url 'home' %}" class="text-white me-3 mt-2 mt-md-0">Home</a>
+            <a href="{% url 'create_booking' %}" class="text-white me-3 mt-2 mt-md-0">Book</a>
+            <a href= "{% url 'home' %}#about" class="text-white me-3 mt-2 mt-md-0">About</a>
             {% if user.is_authenticated %}
-            <a href = "{% url 'my_bookings' %}" class = "text-white me-3">My Bookings</a> 
+            <a href = "{% url 'my_bookings' %}" class = "text-white me-3 mt-2 mt-md-0">My Bookings</a> 
                 <span class="me-3">Welcome, {{ user.username }}</span>
-                <a href="{% url 'logout' %}" class="btn btn-sm btn-outline-light">Logout</a>
+                <a href="{% url 'logout' %}" class="user-button mt-2 mt-md-0">Logout</a>
             {% else %}
-                <a href="{% url 'login' %}" class="login-button">Login</a>
-                <a href="{% url 'register' %}" class="register-button">Register</a>
+                <a href="{% url 'login' %}" class="user-button mt-2 mt-md-0">Login</a>
+                <a href="{% url 'register' %}" class="register-button mt-2 mt-md-0">Register</a>
             {% endif %}
         </nav>
+ <button
+        class="navbar-toggler d-md-none border-0 bg-transparent text-white ms-2"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarMenu"
+        aria-controls="navbarMenu"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="fs-3">☰</span>
+      </button>
     </div>
+  </div>
 </header>
-
 <main class="container mt-4">
     {% if messages %}
         {% for message in messages %}

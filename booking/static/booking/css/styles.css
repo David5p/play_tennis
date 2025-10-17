@@ -113,7 +113,7 @@ h1 {
   background-color: rgba(31, 120, 137, 1);
   color: #fff;
 }
-.login-button {
+a.user-button {
   display: inline-block;
   background-color: rgba(167, 144, 137);
   color: #000000;
@@ -125,7 +125,7 @@ h1 {
   transition: background-color 0.2s ease-in-out;
   margin-right: 10px;
 }
-.login-button:hover {
+a.user-button:hover {
   background-color: rgba(196, 217, 222, 0.8);
   color: #000000;
 }
