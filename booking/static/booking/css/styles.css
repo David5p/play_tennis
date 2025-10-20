@@ -75,12 +75,18 @@ h1 {
 }
 #register,
 #login,
-#court_booking {
+#court_booking,
+#my_bookings .container {
   background-color: rgba(196, 217, 222, 0.8);
   padding: 2rem;
   border-radius: 0.5rem;
 }
-
+.booking-list .list-group-item {
+  background-color: rgba(24, 93, 106, 1);
+  color: white;
+  border-radius: 8px;
+  margin-bottom: 5px; /* spacing between items */
+}
 .general-button {
   display: inline-block;
   background-color: rgba(167, 144, 137);

@@ -3,31 +3,36 @@
 {% block title %}My Bookings{% endblock %}
 
 {% block content %}
-<h2 class="mb-4">My Bookings</h2>
+<div id="my_bookings">
+    <div class="container mt-5">
+        <h2 class="mb-4">My Bookings</h2>
 
-<h3>Upcoming Bookings</h3>
-{% if upcoming %}
-    <ul class="list-group mb-4">
-        {% for booking in upcoming %}
-            <li class="list-group-item">
-                {{ booking.date }} {{ booking.time }} from {{ booking.start_time|time:"H:i" }} to {{ booking.end_time|time:"H:i" }} — {{ booking.court }}
-            </li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>You have no upcoming bookings.</p>
-{% endif %}
+        <h3>Upcoming Bookings</h3>
+        {% if upcoming %}
+            <ul class="booking-list list-group mb-4">
+                {% for booking in upcoming %}
+                    <li class="list-group-item">
+                        {{ booking.date }} from {{ booking.start_time|time:"H:i" }} to {{ booking.end_time|time:"H:i" }} — {{ booking.court }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>You have no upcoming bookings.</p>
+        {% endif %}
 
-<h3>Past Bookings</h3>
-{% if past %}
-    <ul class="list-group">
-        {% for booking in past %}
-            <li class="list-group-item">
-                {{ booking.date }} at {{ booking.time }} — {{ booking.court }}
-            </li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>You have no past bookings.</p>
-{% endif %}
+        <h3>Past Bookings</h3>
+        {% if past %}
+            <ul class="list-group">
+                {% for booking in past %}
+                    <li class="list-group-item">
+                        {{ booking.date }} from {{ booking.start_time|time:"H:i" }} to {{ booking.end_time|time:"H:i" }} — {{ booking.court }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>You have no past bookings.</p>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}
+

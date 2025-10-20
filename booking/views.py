@@ -1,34 +1,76 @@
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import BookingForm
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-from .models import Booking
 from django.utils import timezone
+from .forms import BookingForm
+from .models import Booking
 
 
 def home(request):
     return render(request, 'home.html')
 
 
-@login_required(login_url='login') #Only logged in users can create a booking
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render, redirect
+from .forms import BookingForm
+
+# booking/views.py
+
+from django.contrib import messages
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from .forms import BookingForm
+from .models import Booking
+
+
+def user_has_conflicting_booking(user, date, start_time, end_time):
+    """
+    Returns True if this user already has a booking at the same time.
+    """
+    return Booking.objects.filter(
+        user=user,
+        date=date,
+        start_time__lt=end_time,
+        end_time__gt=start_time
+    ).exists()
+
+
+@login_required(login_url='login')
 def create_booking(request):
     if request.method == 'POST':
-        form = BookingForm(request.POST)
+        form = BookingForm(request.POST, user=request.user)
         if form.is_valid():
             booking = form.save(commit=False)
-            booking.user = request.user # Link booking to the logged in user
+            booking.user = request.user
+            booking.name = request.user.get_full_name() or request.user.username
+
+            # 🔍 Use the helper directly here
+            if user_has_conflicting_booking(
+                request.user, booking.date, booking.start_time, booking.end_time
+            ):
+                messages.error(request, "You already have a booking at that time.")
+                return redirect('create_booking')
+
             booking.save()
             messages.success(request, "Your booking was successful!")
-            return redirect('create_booking')
+            return redirect('my_bookings')
+
     else:
-        form = BookingForm()
-    
-    return render(request, 'booking/create_booking.html',{'form': form})
+        form = BookingForm(
+            user=request.user,
+            initial={'name': request.user.get_full_name() or request.user.username}
+        )
+
+    return render(request, 'booking/create_booking.html', {'form': form})
+
 
 def register(request):
+    """Simple user registration view."""
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
@@ -37,7 +79,9 @@ def register(request):
             return redirect('home')
     else:
         form = UserCreationForm()
-    return render(request, 'registration/signup.html', {'form': form})
+
+    return render(request, 'register.html', {'form': form})
+
 
 @login_required(login_url='login')
 def my_bookings(request):

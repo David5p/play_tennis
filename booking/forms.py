@@ -1,6 +1,7 @@
 from django import forms
 from .models import Booking
 from datetime import time,  timedelta, datetime
+from django.core.exceptions import ValidationError
 
 class BookingForm(forms.ModelForm):
     TIME_CHOICES = [(time(h, 0), f"{h:02d}:00")for h in range(7,21)]
@@ -14,7 +15,12 @@ class BookingForm(forms.ModelForm):
         widgets = {
             'date': forms.DateInput(attrs={'type': 'date'}), 
         }
-    
+
+    def __init__(self, *args, **kwargs):
+        """Accept user from view for conflict checking."""
+        self.user = kwargs.pop('user', None)
+        super().__init__(*args, **kwargs)
+
     def clean_start_time(self):
         """Convert the selected string back to a Python time object."""
         value = self.cleaned_data['start_time']
@@ -36,3 +42,25 @@ class BookingForm(forms.ModelForm):
             return time.fromisoformat(end)
 
         raise forms.ValidationError("Please select an end time.")
+    
+    
+    def clean(self):
+        """Prevent overlapping bookings for the same user."""
+        cleaned_data = super().clean()
+        user = self.user
+        date = cleaned_data.get('date')
+        start_time = cleaned_data.get('start_time')
+        end_time = cleaned_data.get('end_time')
+
+        if user and date and start_time and end_time:
+            from .models import Booking
+            overlap = Booking.objects.filter(
+                user=user, date=date,
+                start_time__lt=end_time,
+                end_time__gt=start_time,
+            ).exists()
+
+            if overlap:
+                raise ValidationError("You already have a booking at this time.")
+
+        return cleaned_data
