@@ -1,6 +1,6 @@
 from django import forms
 from .models import Booking
-from datetime import time,  timedelta, datetime
+from datetime import date, time,  timedelta, datetime
 from django.core.exceptions import ValidationError
 
 class BookingForm(forms.ModelForm):
@@ -13,7 +13,9 @@ class BookingForm(forms.ModelForm):
         model = Booking
         fields = ['court', 'name', 'email', 'date', 'start_time', 'end_time']
         widgets = {
-            'date': forms.DateInput(attrs={'type': 'date'}), 
+            'date': forms.DateInput(attrs={'type': 'date',
+                                           'min': date.today()
+                                           .strftime('%Y-%m-%d')}), 
         }
 
     def __init__(self, *args, **kwargs):

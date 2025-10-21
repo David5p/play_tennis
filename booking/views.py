@@ -80,7 +80,7 @@ def register(request):
     else:
         form = UserCreationForm()
 
-    return render(request, 'register.html', {'form': form})
+    return render(request, 'booking/register.html', {'form': form})
 
 
 @login_required(login_url='login')
