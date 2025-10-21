@@ -18,6 +18,13 @@ class BookingForm(forms.ModelForm):
                                            .strftime('%Y-%m-%d')}), 
         }
 
+     def clean_date(self):
+        """Validate form logic so booking in the past cannot be made"""
+        selected_date = self.cleaned_data['date']
+        if selected_date < date.today():
+            raise ValidationError("You cannot book a date in the past.")
+        return selected_date
+
     def __init__(self, *args, **kwargs):
         """Accept user from view for conflict checking."""
         self.user = kwargs.pop('user', None)
