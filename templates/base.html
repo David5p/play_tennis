@@ -24,12 +24,13 @@
 <body>
 <header id="navbar" class="text-white p-3">
   <nav class="navbar navbar-expand-md">
-    <div class="container d-flex align-items-center">
+    <div class="container-fluid d-flex align-items-center justify-content-between px-3">
 
       <!-- Brand -->
-      <a class="navbar-brand text-white me-3" href="{% url 'home' %}">
-        <h1 class="h4 mb-0 text-white">Play Tennis</h1>
-      </a>
+        <a class="navbar-brand d-flex align-items-center text-white me-3" href="{% url 'home' %}">
+  <img src="{% static 'booking/images/logo.png' %}" alt="Play Tennis Logo" class="logo me-2">
+  <h1 class="h4 mb-0 text-white">Play Tennis</h1>
+</a>
 
       <!-- Toggler -->
       <button class="navbar-toggler border-0 bg-transparent text-white" type="button"

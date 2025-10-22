@@ -10,6 +10,12 @@ body {
   color: var(--color-text-main);
   font-size: 1.25rem;
 }
+.logo {
+  height: 50px;
+  width: auto;
+  max-width: 120px;
+  border-radius: 8px;
+}
 
 header#navbar {
   background-color: rgba(24, 93, 106, 1) !important;
@@ -89,13 +95,14 @@ h1 {
 }
 .general-button {
   display: inline-block;
-  background-color: rgba(167, 144, 137);
+  background-color: rgba(183, 206, 180);
   color: #000000;
-  padding: 0.6rem 1.2rem;
+  font-size: 1.5rem;
+  padding: 1.2rem 2rem;
   border: none;
   border-radius: 6px;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 800;
   transition: background-color 0.2s ease-in-out;
 }
 .booking-login {
@@ -116,8 +123,8 @@ h1 {
 }
 
 .general-button:hover {
-  background-color: rgba(31, 120, 137, 1);
-  color: #fff;
+  background-color: rgba(196, 217, 222);
+  color: #000000;
 }
 a.user-button {
   display: inline-block;
