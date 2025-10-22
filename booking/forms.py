@@ -18,7 +18,7 @@ class BookingForm(forms.ModelForm):
                                            .strftime('%Y-%m-%d')}), 
         }
 
-     def clean_date(self):
+    def clean_date(self):
         """Validate form logic so booking in the past cannot be made"""
         selected_date = self.cleaned_data['date']
         if selected_date < date.today():
