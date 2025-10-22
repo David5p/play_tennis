@@ -1,11 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from django.contrib.auth import login
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
-from .forms import BookingForm
 from .models import Booking
+from .forms import BookingForm
 
 
 def home(request):
@@ -92,3 +90,21 @@ def my_bookings(request):
         'upcoming': upcoming,
         'past': past
     })
+
+@login_required
+def cancel_booking(request, booking_id):
+    if request.method == 'POST':
+        booking = get_object_or_404(Booking, id=booking_id, user=request.user)
+        
+        # Prevent cancelling past bookings
+        if booking.date < timezone.now().date():
+            messages.error(request, "You cannot cancel past bookings.")
+            return redirect('my_bookings')
+        
+        # Delete only upcoming booking
+        booking.delete()
+        messages.success(request, "Your booking has been cancelled.")
+        return redirect('my_bookings')
+    
+    # Redirect if GET request
+    return redirect('my_bookings')

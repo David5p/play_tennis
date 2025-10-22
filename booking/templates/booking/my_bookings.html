@@ -11,8 +11,13 @@
         {% if upcoming %}
             <ul class="booking-list list-group mb-4">
                 {% for booking in upcoming %}
-                    <li class="list-group-item">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>
                         {{ booking.date }} from {{ booking.start_time|time:"H:i" }} to {{ booking.end_time|time:"H:i" }} — {{ booking.court }}
+                        </span>
+                        <form method="POST" action="{% url 'cancel_booking' booking.id %}" onsubmit = "return confirm('Are you sure you want to cancel this booking?');" class="mb-0">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger btn-sm">Cancel</button>
                     </li>
                 {% endfor %}
             </ul>
