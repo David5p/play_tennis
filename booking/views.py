@@ -108,3 +108,36 @@ def cancel_booking(request, booking_id):
     
     # Redirect if GET request
     return redirect('my_bookings')
+
+@login_required
+def edit_booking(request, booking_id):
+    booking = get_object_or_404(Booking, id=booking_id, user=request.user)
+        
+    # Prevent cancelling past bookings
+    if booking.date < timezone.now().date():
+        messages.error(request, "You cannot edit past bookings.")
+        return redirect('my_bookings')
+        
+    # edit only upcoming booking
+    if request.method == 'POST':
+        form = BookingForm(request.POST, user= request.user, instance=booking)
+        if form.is_valid():
+            updated_booking = form.save(commit = False)
+            overlap = Booking.objects.filter(
+                user=request.user,
+                date=updated_booking.date,
+                start_time__lt=updated_booking.end_time,
+                end_time__gt=updated_booking.start_time
+            ).exclude(id=booking.id).exists()
+
+            if overlap:
+                messages.error(request, "This change clashes with another booking.")
+                return redirect('edit_booking', booking_id=booking.id)
+
+            updated_booking.save()
+            messages.success(request, "Your booking has been updated successfully.")
+            return redirect('my_bookings')
+    else:
+        form = BookingForm(user=request.user, instance=booking)
+
+    return render(request, 'booking/edit_booking.html', {'form': form, 'booking': booking}) 

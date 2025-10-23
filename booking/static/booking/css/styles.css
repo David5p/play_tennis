@@ -93,7 +93,7 @@ h1 {
   border-radius: 8px;
   margin-bottom: 5px; /* spacing between items */
 }
-.general-button {
+.main-button {
   display: inline-block;
   background-color: rgba(183, 206, 180);
   color: #000000;
@@ -122,9 +122,21 @@ h1 {
   color: #fff;
 }
 
-.general-button:hover {
+.main-button:hover {
   background-color: rgba(196, 217, 222);
   color: #000000;
+}
+
+.confirm-booking {
+  background-color: rgba(100, 140, 110, 1);
+  color: #ffffff;
+  font-weight: bold;
+  border: transparent;
+}
+
+.confirm-booking:hover {
+  background-color: rgba(31, 120, 137, 1);
+  color: #ffffff;
 }
 a.user-button {
   display: inline-block;
