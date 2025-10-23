@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'booking/css/styles.css' %}">
@@ -80,8 +82,46 @@
     {% block content %}{% endblock %}
 </main>
 
-<footer class="bg-light text-center py-3 mt-4">
-    <p class="mb-0">&copy; 2025 Play Tennis</p>
+<footer class="bg-dark text-white pt-5 pb-3 mt-5">
+  <div class="container">
+    <div class="row">
+
+      <!-- Social Media -->
+      <div class="col-md-4 mb-3">
+        <h5>Follow Us</h5>
+        <a href="https://www.instagram.com" target="_blank" class="text-white me-3">
+          <i class="bi bi-instagram"></i> Instagram
+        </a><br>
+        <a href="https://twitter.com" target="_blank" class="text-white me-3">
+          <i class="bi bi-twitter"></i> Twitter
+        </a><br>
+        <a href="https://www.youtube.com" target="_blank" class="text-white">
+          <i class="bi bi-youtube"></i> YouTube
+        </a>
+      </div>
+
+      <!-- Address -->
+      <div class="col-md-4 mb-3">
+        <h5>Address</h5>
+        <p>
+          Harton Play Tennis<br>
+          Harton Old Road<br>
+          GU 4HP
+        </p>
+      </div>
+
+      <!-- Contact -->
+      <div class="col-md-4 mb-3">
+        <h5>Contact</h5>
+        <p>Phone: 01483 439 209</p>
+        <p>Email: harton.playtennis@gmail.com</p>
+      </div>
+
+    </div>
+
+    <hr class="bg-white">
+    <p class="text-center mb-0">&copy; 2025 Harton Play Tennis. All Rights Reserved.</p>
+  </div>
 </footer>
 
 <!-- Bootstrap JS (for alerts, dropdowns etc.) -->
