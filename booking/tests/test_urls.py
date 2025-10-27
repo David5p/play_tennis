@@ -1,20 +1,17 @@
 from django.test import SimpleTestCase
 from django.urls import reverse, resolve
 from booking.views import home, create_booking, my_bookings, register
+from booking import views
 
 class TestUrls(SimpleTestCase):
-    def test_home_url_resolves(self):
-        url = reverse('home')
-        self.assertEqual(resolve(url).func, home)
+    def test_urls_resolve_to_correct_view(self):
+        url_view_map = {
+            'home': views.home,
+            'create_booking': views.create_booking,
+            'my_bookings': views.my_bookings,
+            'register': views.register,
+        }
 
-    def test_create_booking_url_resolves(self):
-        url = reverse('create_booking')
-        self.assertEqual(resolve(url).func, create_booking)
-
-    def test_my_bookings_url_resolves(self):
-        url = reverse('my_bookings')
-        self.assertEqual(resolve(url).func, my_bookings)
-    
-    def test_register_url_resolves(self):
-        url = reverse('register')
-        self.assertEqual(resolve(url).func, register)
+        for url_name, view_func in url_view_map.items():
+            url = reverse(url_name)
+            self.assertEqual(resolve(url).func, view_func)
