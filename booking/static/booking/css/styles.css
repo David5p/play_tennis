@@ -189,6 +189,15 @@ a.user-button:hover {
   color: #ffffff;
   font-weight: bolder;
 }
+ul.errorlist.nonfield {
+  background-color: #ffbf00; /* dark amber background */
+  color: #000; /* black text */
+  text-align: center;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  list-style: none; /* remove bullets */
+  margin-bottom: 1rem;
+}
 
 #footer {
   background-color: rgba(200, 200, 200, 1);
