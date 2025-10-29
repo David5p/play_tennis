@@ -1,5 +1,5 @@
 from django.db import models
-from django.core.exceptions import ValidationError
+from django.core.exceptions import ValidationError, ObjectDoesNotExist
 from datetime import time
 from django.contrib.auth.models import User
 
@@ -54,6 +54,9 @@ class Booking(models.Model):
 
     def _validate_time_on_the_hour(self):
         """Ensure booking times are on the hour"""
+        # Skip validation if times are not provided (handled by form)
+        if not self.start_time or not self.end_time:
+            return
         if self.start_time.minute != 0 or self.start_time.second != 0:
             raise ValidationError("Start time must be on the hour (e.g., 8:00, 9:00).")
         if self.end_time.minute != 0 or self.end_time.second != 0:
@@ -61,11 +64,16 @@ class Booking(models.Model):
 
     def _validate_time_order(self):
         """Ensures end time is after start time"""
+        # Skip validation if times are not provided (handled by form)
+        if not self.start_time or not self.end_time:
+            return
         if self.end_time <= self.start_time:
             raise ValidationError("End time must be after start time.")
 
     def _validate_opening_hours(self):
         """Opening hours of venue"""
+        if not self.start_time or not self.end_time:
+            return
         opening_time = time(7, 0)
         closing_time = time(21, 0)
         if not (opening_time <= self.start_time <
@@ -74,25 +82,30 @@ closing_time):
         if not (opening_time < self.end_time <= closing_time):
             raise ValidationError("Bookings can only end between 7:00 and 21:00.")
 
-    def _validate_outdoor_availability(self):
-        """Block courts for bookings in winter"""
-        if self.court.court_type == 'outdoor' and self.date.month in [12, 1, 2, 3]:
-            raise ValidationError("Outdoor courts are closed from December to March.")
+def _validate_outdoor_availability(self):
+    """Block courts for bookings in winter"""
+    if not self.court or not self.date:
+        return
+    if self.court.court_type == 'outdoor' and self.date.month in [12, 1, 2, 3]:
+        raise ValidationError("Outdoor courts are closed from December to March.")
 
-    def _validate_no_overlap(self):
-        """Prevent double bookings"""
-        overlapping = Booking.objects.filter(
-            court=self.court,
-            date=self.date,
-            start_time__lt=self.end_time,
-            end_time__gt=self.start_time
-        )
-        # Exclude the current booking when editing an existing one
-        if self.pk:
-            overlapping = overlapping.exclude(pk=self.pk)
+def _validate_no_overlap(self):
+    """Prevent double bookings"""
+    if not self.court or not self.date or not self.start_time or not self.end_time:
+        return
+    overlapping = Booking.objects.filter(
+        court=self.court,
+        date=self.date,
+        start_time__lt=self.end_time,
+        end_time__gt=self.start_time
+    )
+    if self.pk:
+        overlapping = overlapping.exclude(pk=self.pk)
+    if overlapping.exists():
+        raise ValidationError("This court is already booked for that time slot.")
 
-        if overlapping.exists():
-            raise ValidationError("This court is already booked for that time slot.")
+
+
 
     def save(self, *args, **kwargs):
         """Ensure validation runs before saving"""
