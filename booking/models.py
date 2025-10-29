@@ -82,28 +82,40 @@ closing_time):
         if not (opening_time < self.end_time <= closing_time):
             raise ValidationError("Bookings can only end between 7:00 and 21:00.")
 
-def _validate_outdoor_availability(self):
-    """Block courts for bookings in winter"""
-    if not self.court or not self.date:
-        return
-    if self.court.court_type == 'outdoor' and self.date.month in [12, 1, 2, 3]:
-        raise ValidationError("Outdoor courts are closed from December to March.")
 
-def _validate_no_overlap(self):
-    """Prevent double bookings"""
-    if not self.court or not self.date or not self.start_time or not self.end_time:
-        return
-    overlapping = Booking.objects.filter(
-        court=self.court,
-        date=self.date,
-        start_time__lt=self.end_time,
-        end_time__gt=self.start_time
-    )
-    if self.pk:
-        overlapping = overlapping.exclude(pk=self.pk)
-    if overlapping.exists():
-        raise ValidationError("This court is already booked for that time slot.")
+    def _validate_outdoor_availability(self):
+        """Block courts for bookings in winter"""
+        try:
+          court = self.court
+        except ObjectDoesNotExist:
+            return  # Skip if no court assigned
 
+        if not self.date:
+            return  # Skip if no date assigned
+
+        if court.court_type == 'outdoor' and self.date.month in [12, 1, 2, 3]:
+            raise ValidationError("Outdoor courts are closed from December to March.")
+
+    def _validate_no_overlap(self):
+        """Prevent double bookings"""
+        try:
+            if not self.court or not self.date or not self.start_time or not self.end_time:
+                return
+            overlapping = Booking.objects.filter(
+                court=self.court,
+                date=self.date,
+                start_time__lt=self.end_time,
+                end_time__gt=self.start_time
+        )
+            # Exclude the current booking when editing an existing one
+            if self.pk:
+                overlapping = overlapping.exclude(pk=self.pk)
+
+            if overlapping.exists():
+                raise ValidationError("This court is already booked for that time slot.")
+        except ObjectDoesNotExist:
+            # If any related object is missing, skip this check
+            return
 
 
 
