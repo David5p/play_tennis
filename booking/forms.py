@@ -4,7 +4,7 @@ from datetime import date, time,  timedelta, datetime
 from django.core.exceptions import ValidationError
 
 class BookingForm(forms.ModelForm):
-    TIME_CHOICES = [(time(h, 0), f"{h:02d}:00")for h in range(7,21)]
+    TIME_CHOICES = [(time(h, 0), f"{h:02d}:00")for h in range(7,22)]
     
     start_time = forms.ChoiceField(choices = TIME_CHOICES)
     end_time = forms.ChoiceField(choices = TIME_CHOICES)

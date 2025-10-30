@@ -19,11 +19,13 @@ class Court (models.Model):
     court_type = models.CharField(max_length=10, choices=COURT_TYPE_CHOICES)
     surface_type = models.CharField(max_length=10, choices=SURFACE_CHOICES, default = 'hard')
 
+
     def clean(self):
         """Custom validation to prevent clay courts from being indoor"""
         if self.court_type == 'indoor' and self.surface_type == 'clay':
             raise ValidationError("Indoor courts are hard courts only.")
     
+
     def save(self, *args, **kwargs):
         """Ensure validation runs before saving"""
         self.full_clean()  # ensures clean() runs before saving
@@ -43,6 +45,7 @@ class Booking(models.Model):
     end_time = models.TimeField()
     created_at = models.DateTimeField(auto_now_add=True)
     
+
     def clean(self):
         """Run all validation checks for a booking"""
         super().clean()
@@ -50,7 +53,9 @@ class Booking(models.Model):
         self._validate_time_order()
         self._validate_opening_hours()
         self._validate_outdoor_availability()
+        self._validate_maximum_duration()
         self._validate_no_overlap()
+
 
     def _validate_time_on_the_hour(self):
         """Ensure booking times are on the hour"""
@@ -62,6 +67,7 @@ class Booking(models.Model):
         if self.end_time.minute != 0 or self.end_time.second != 0:
             raise ValidationError("End time must be on the hour (e.g., 9:00, 10:00).")
 
+
     def _validate_time_order(self):
         """Ensures end time is after start time"""
         # Skip validation if times are not provided (handled by form)
@@ -70,19 +76,19 @@ class Booking(models.Model):
         if self.end_time <= self.start_time:
             raise ValidationError("End time must be after start time.")
 
+    
     def _validate_opening_hours(self):
         """Opening hours of venue"""
         if not self.start_time or not self.end_time:
             return
         opening_time = time(7, 0)
-        closing_time = time(21, 0)
+        closing_time = time(21, 0) if (self.user and self.user.is_staff) else time(20, 0)
         if not (opening_time <= self.start_time <
 closing_time):
             raise ValidationError("Bookings can only start between 7:00 and 21:00.")
         if not (opening_time < self.end_time <= closing_time):
             raise ValidationError("Bookings can only end between 7:00 and 21:00.")
-
-
+    
     def _validate_outdoor_availability(self):
         """Block courts for bookings in winter"""
         try:
@@ -116,6 +122,15 @@ closing_time):
         except ObjectDoesNotExist:
             # If any related object is missing, skip this check
             return
+
+    def _validate_maximum_duration(self):
+        """No single booking can be more than 3 hours."""
+        if not self.start_time or not self.end_time:
+            return
+
+        duration_hours = (self.end_time.hour - self.start_time.hour)
+        if duration_hours > 3:
+            raise ValidationError("You cannot book a court for more than 3 hours in a single booking.")
 
 
 
