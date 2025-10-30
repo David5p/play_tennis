@@ -89,6 +89,7 @@ closing_time):
         if not (opening_time < self.end_time <= closing_time):
             raise ValidationError("Bookings can only end between 7:00 and 21:00.")
     
+    
     def _validate_outdoor_availability(self):
         """Block courts for bookings in winter"""
         try:
@@ -101,6 +102,7 @@ closing_time):
 
         if court.court_type == 'outdoor' and self.date.month in [12, 1, 2, 3]:
             raise ValidationError("Outdoor courts are closed from December to March.")
+
 
     def _validate_no_overlap(self):
         """Prevent double bookings"""
@@ -122,6 +124,7 @@ closing_time):
         except ObjectDoesNotExist:
             # If any related object is missing, skip this check
             return
+
 
     def _validate_maximum_duration(self):
         """No single booking can be more than 3 hours."""
