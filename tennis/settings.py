@@ -20,7 +20,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'https://play-tennis-83df5b15f521.herokuapp.com/']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'play-tennis-83df5b15f521.herokuapp.com']
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
