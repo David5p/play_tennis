@@ -10,22 +10,6 @@ def home(request):
     return render(request, 'home.html')
 
 
-from django.contrib.auth.decorators import login_required
-from django.contrib import messages
-from django.contrib.auth import login
-from django.contrib.auth.forms import UserCreationForm
-from django.shortcuts import render, redirect
-from .forms import BookingForm
-
-# booking/views.py
-
-from django.contrib import messages
-from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
-from .forms import BookingForm
-from .models import Booking
-
-
 def user_has_conflicting_booking(user, date, start_time, end_time):
     """
     Returns True if this user already has a booking at the same time.
@@ -46,8 +30,9 @@ def create_booking(request):
             booking = form.save(commit=False)
             booking.user = request.user
             booking.name = request.user.get_full_name() or request.user.username
+            booking.email = request.user.email
 
-            # 🔍 Use the helper directly here
+            #Use the helper directly here
             if user_has_conflicting_booking(
                 request.user, booking.date, booking.start_time, booking.end_time
             ):
@@ -59,10 +44,8 @@ def create_booking(request):
             return redirect('my_bookings')
 
     else:
-        form = BookingForm(
-            user=request.user,
-            initial={'name': request.user.get_full_name() or request.user.username}
-        )
+        form = BookingForm(user=request.user)
+
 
     return render(request, 'booking/create_booking.html', {'form': form})
 

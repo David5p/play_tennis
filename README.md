@@ -204,9 +204,9 @@ Wireframes: https://drive.google.com/file/d/1jKxvqleNVu_oNVqvZlpYt43qoXmn766d/vi
 - Once the user is logged in, they can submit the form to book a court.
 - All the fields in the form are set as a required field, hence any field left blank will not allow user to proceed and book a court until it is filled.
 
-- The Name Field autofills with the username.
+- The name field originally appeared on the booking form and autofilled with the username. To streamline the process and avoid redundancy (as users are already logged in), it’s now automatically assigned when a booking is created.
 
-- The email field requires the @ symbol to be included.
+- The email field requires the @ symbol to be included. This also could have been removed but could have merit in future development should booking confirmations be sent to the user's email.
 
 - The Date Field only allows the user to choose from the current date or future date. It doesn't allow the user to proceed with booking an outdoor court from December to March.
 

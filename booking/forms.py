@@ -11,7 +11,7 @@ class BookingForm(forms.ModelForm):
 
     class Meta:
         model = Booking
-        fields = ['court', 'name', 'email', 'date', 'start_time', 'end_time']
+        fields = ['court', 'email', 'date', 'start_time', 'end_time']
         widgets = {
             'date': forms.DateInput(attrs={'type': 'date',
                                            'min': date.today()
