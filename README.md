@@ -154,3 +154,18 @@ Wireframes: https://drive.google.com/file/d/1jKxvqleNVu_oNVqvZlpYt43qoXmn766d/vi
 - After the selection of the midnight green background for my navbar inside the header, I chose a background color of silver for my footer. I had initially considered midnight green for my footer as well but realised this can make the page seem monotonous and the use of a contrast helps create a clear structure.
 
 - The silver and midnight green pairing provides a clean and modern aesthetic that feels calm, stable, and visually harmonious.
+
+### Images
+
+- The main image on the homepage was chosen as it conveys community, activity, and accessibility. The row of players holding rackets suggests teamwork and readiness, appealing to both casual and competitive players. The image has bright, natural lighting and relaxed composition create an inviting atmosphere that encourages users to get involved and play.
+
+### Styling
+
+- I used Bootstrap 5.3 grid system where possible to support with positioning, text style and size.
+- I have applied my preferred colors and fonts using custom css.
+- I applied custom styles to the base.html so that all my pages had the same structure, layout and styles.
+- I have added in JavaScript so that the end time automatically sets an hour later than the start time.
+
+<p align="center">
+  <img src="booking/static/booking/images/booking_system.png" alt="booking system">
+</p>
