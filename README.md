@@ -23,7 +23,10 @@ The website consists of a homepage which allow introduces the club and allows us
     - [Images](#images)
     - [Styling](#styling)
 - [Features](#features)
-  - [Existing Features](#existing-features)
+  - [Page Elements](#page-elements)
+    - [Homepage](#homepage)
+    - [Book and Register](#book-and-register)
+    - [My Bookings](#my-bookings)
   - [Future Features](#future-features)
 - [Technologies Used](#technologies-used)
   - [languages](#Languages)
@@ -168,4 +171,65 @@ Wireframes: https://drive.google.com/file/d/1jKxvqleNVu_oNVqvZlpYt43qoXmn766d/vi
 
 <p align="center">
   <img src="booking/static/booking/images/booking_system.png" alt="booking system">
+</p>
+
+## Features
+
+### Page Elements
+
+#### Homepage
+
+- The homepage has a simple navbar and the 'make a booking' button features prominently.
+
+<p align="center">
+  <img src="booking/static/booking/images/homepage.png" alt="Website homepage">
+</p>
+
+- A brief introduction to the club is also provided on the homepage.
+
+#### Book and Register
+
+- When the user clicks on the book page they are invited to login or to register.
+
+<p align="center">
+  <img src="booking/static/booking/images/login.png" alt="Login page">
+</p>
+
+<p align="center">
+  <img src="booking/static/booking/images/register.png" alt="Register page">
+</p>
+
+- I decided to only allow registered users to have the ability to book courts because users should be repeat visitors to the site.
+- If the user tries to book a court without signing in they are redirected to the login page.
+- Once the user is logged in, they can submit the form to book a court.
+- All the fields in the form are set as a required field, hence any field left blank will not allow user to proceed and book a court until it is filled.
+
+- The Name Field autofills with the username.
+
+- The email field requires the @ symbol to be included.
+
+- The Date Field only allows the user to choose from the current date or future date. It doesn't allow the user to proceed with booking an outdoor court from December to March.
+
+- The Time field only shows the times a user can book a court from and is also validated so a court cannot be booked at the same time twice or have any overlapping time.
+
+- If the information entered passes validation, the Book button directs the user back to their personalised My booking page, where they can view or edit any existing upcoming bookings and view past bookings.
+
+- The style is consistent with the rest of the webpage and it is fully responsive.
+
+#### My Bookings
+
+- Once logged in, the user can view a personalised page where their bookings past and present are listed.
+
+<p align="center">
+  <img src="booking/static/booking/images/my_bookings.png" alt="My Bookings page">
+</p>
+
+- The user can cancel or amend any upcoming bookings.
+
+### Future Features
+
+- Future plans mentioned in my user stories include the ability to make online payments, sign in using social media, email confirmations of bookings and a mobile application.
+
+<p align="center">
+  <img src="booking/static/booking/images/future_plans.png" alt="User stories for future projects">
 </p>
