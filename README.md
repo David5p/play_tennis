@@ -27,6 +27,7 @@ The website consists of a homepage which allow introduces the club and allows us
     - [Homepage](#homepage)
     - [Book and Register](#book-and-register)
     - [My Bookings](#my-bookings)
+    - [Admin](#admin)
   - [Future Features](#future-features)
 - [Technologies Used](#technologies-used)
   - [languages](#Languages)
@@ -187,6 +188,8 @@ Wireframes: https://drive.google.com/file/d/1jKxvqleNVu_oNVqvZlpYt43qoXmn766d/vi
 
 - A brief introduction to the club is also provided on the homepage.
 
+- The footer also features on all pages and contains social media links, the address of the venue and contact details.
+
 #### Book and Register
 
 - When the user clicks on the book page they are invited to login or to register.
@@ -226,6 +229,44 @@ Wireframes: https://drive.google.com/file/d/1jKxvqleNVu_oNVqvZlpYt43qoXmn766d/vi
 
 - The user can cancel or amend any upcoming bookings.
 
+#### Admin
+
+- The website offers the owner the ability to view, edit and interact with the database in the Django Admin panel.
+
+<p align="center">
+  <img src="booking/static/booking/images/django_admin.png" alt="Admin login page">
+</p>
+
+- The admin panel is accessible by the addition of /admin at the end of the website's URL.
+
+- The user is then taken to the Django Administration Login page and asked to provide their login credentials. Only users with Superuser status can accesss the admin panel.
+
+<p align="center">
+  <img src="booking/static/booking/images/django_admin.png" alt="Admin login page">
+</p>
+
+- The Superuser has permissions which include:
+
+  - Add or remove users.
+
+            <p align="center">
+            <img src="booking/static/booking/images/django_admin2.png" alt="Django user page">
+
+          </p>
+            - Edit or delete court bookings.
+
+            <p align="center">
+
+          <img src="booking/static/booking/images/django_admin3.png" alt="Court bookings">
+        </p>
+            - Edit, delete or add courts.
+
+            <p align="center">
+
+      <img src="booking/static/booking/images/django_admin5.png" alt="Admin login page">
+    </p>
+            - Filter bookings by name, court, date or using the search bar.
+
 ### Future Features
 
 - Future plans mentioned in my user stories include the ability to make online payments, sign in using social media, email confirmations of bookings and a mobile application.
@@ -233,3 +274,5 @@ Wireframes: https://drive.google.com/file/d/1jKxvqleNVu_oNVqvZlpYt43qoXmn766d/vi
 <p align="center">
   <img src="booking/static/booking/images/future_plans.png" alt="User stories for future projects">
 </p>
+
+- Other future plans for the site include, a forgotten password button that would allow users to reset their password, a photo gallery and tiered membership costs.
