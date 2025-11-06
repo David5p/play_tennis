@@ -8,7 +8,6 @@ from .models import Booking
 from .forms import BookingForm
 
 
-
 def home(request):
     return render(request, 'home.html')
 
@@ -34,11 +33,12 @@ def create_booking(request):
             booking.user = request.user
             booking.name = request.user.get_full_name() or request.user.username
 
-            #Use the helper directly here
+            # Use the helper directly here
             if user_has_conflicting_booking(
                 request.user, booking.date, booking.start_time, booking.end_time
             ):
-                messages.error(request, "You already have a booking at that time.")
+                messages.error(
+                    request, "You already have a booking at that time.")
                 return redirect('create_booking')
 
             booking.save()
@@ -47,7 +47,6 @@ def create_booking(request):
 
     else:
         form = BookingForm(user=request.user)
-
 
     return render(request, 'booking/create_booking.html', {'form': form})
 
@@ -69,45 +68,49 @@ def register(request):
 @login_required(login_url='login')
 def my_bookings(request):
     today = timezone.now().date()
-    upcoming = Booking.objects.filter(user=request.user, date__gte =today).order_by('date')
-    past = Booking.objects.filter(user=request.user, date__lt =today).order_by('-date')
+    upcoming = Booking.objects.filter(
+        user=request.user, date__gte=today).order_by('date')
+    past = Booking.objects.filter(
+        user=request.user, date__lt=today).order_by('-date')
     return render(request, 'booking/my_bookings.html', {
         'upcoming': upcoming,
         'past': past
     })
 
+
 @login_required
 def cancel_booking(request, booking_id):
     if request.method == 'POST':
         booking = get_object_or_404(Booking, id=booking_id, user=request.user)
-        
+
         # Prevent cancelling past bookings
         if booking.date < timezone.now().date():
             messages.error(request, "You cannot cancel past bookings.")
             return redirect('my_bookings')
-        
+
         # Delete only upcoming booking
         booking.delete()
         messages.success(request, "Your booking has been cancelled.")
         return redirect('my_bookings')
-    
+
     # Redirect if GET request
     return redirect('my_bookings')
+
 
 @login_required
 def edit_booking(request, booking_id):
     booking = get_object_or_404(Booking, id=booking_id, user=request.user)
-        
+
     # Prevent cancelling past bookings
     if booking.date < timezone.now().date():
         messages.error(request, "You cannot edit past bookings.")
         return redirect('my_bookings')
-        
+
     # edit only upcoming booking
     if request.method == 'POST':
-        form = BookingForm(request.POST, user= request.user, instance=booking)
+        form = BookingForm(request.POST, user=request.user, instance=booking)
         if form.is_valid():
-            updated_booking = form.save(commit = False)
+            updated_booking = form.save(commit=False)
             overlap = Booking.objects.filter(
                 user=request.user,
                 date=updated_booking.date,
@@ -116,13 +119,16 @@ def edit_booking(request, booking_id):
             ).exclude(id=booking.id).exists()
 
             if overlap:
-                messages.error(request, "This change clashes with another booking.")
+                messages.error(
+                    request, "This change clashes with another booking.")
                 return redirect('edit_booking', booking_id=booking.id)
 
             updated_booking.save()
-            messages.success(request, "Your booking has been updated successfully.")
+            messages.success(
+                request, "Your booking has been updated successfully.")
             return redirect('my_bookings')
     else:
         form = BookingForm(user=request.user, instance=booking)
 
-    return render(request, 'booking/edit_booking.html', {'form': form, 'booking': booking}) 
+    return render(request, 'booking/edit_booking.html',
+                  {'form': form, 'booking': booking})

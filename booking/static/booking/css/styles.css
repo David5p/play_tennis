@@ -189,6 +189,13 @@ a.user-button:hover {
   color: #ffffff;
   font-weight: bolder;
 }
+
+select[name="court"] {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
 ul.errorlist.nonfield {
   background-color: #ffbf00; /* dark amber background */
   color: #000; /* black text */
