@@ -33,7 +33,6 @@ def create_booking(request):
             booking = form.save(commit=False)
             booking.user = request.user
             booking.name = request.user.get_full_name() or request.user.username
-            booking.email = request.user.email
 
             #Use the helper directly here
             if user_has_conflicting_booking(

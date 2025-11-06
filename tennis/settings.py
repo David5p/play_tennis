@@ -17,7 +17,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Security settings
 SECRET_KEY = os.environ.get("SECRET_KEY")
-DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
+DEBUG = os.environ.get("DEBUG", "true").lower() == "true"
 
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'play-tennis-83df5b15f521.herokuapp.com']

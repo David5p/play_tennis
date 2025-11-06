@@ -26,9 +26,12 @@ class BookingForm(forms.ModelForm):
         return selected_date
 
     def __init__(self, *args, **kwargs):
-        """Accept user from view for conflict checking."""
         self.user = kwargs.pop('user', None)
         super().__init__(*args, **kwargs)
+    
+        if self.user:
+            self.instance.user = self.user
+            self.instance.email = self.user.email  
 
     def clean_start_time(self):
         """Convert the selected string back to a Python time object."""
