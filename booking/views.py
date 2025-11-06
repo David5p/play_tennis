@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
+from django.contrib.auth import logout
 from django.utils import timezone
 from .models import Booking
 from .forms import BookingForm
@@ -22,6 +24,20 @@ def user_has_conflicting_booking(user, date, start_time, end_time):
         start_time__lt=end_time,
         end_time__gt=start_time
     ).exists()
+
+
+class CustomLoginView(LoginView):
+    def form_valid(self, form):
+        messages.success(
+            self.request, f"Welcome back, {form.get_user().username}!")
+        return super().form_valid(form)
+
+
+@login_required
+def logout_view(request):
+    logout(request)
+    messages.success(request, "You have been logged out successfully.")
+    return redirect('home')
 
 
 @login_required(login_url='login')
@@ -58,6 +74,8 @@ def register(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
+            messages.success(
+                request, "Your account has been created successfully!")
             return redirect('home')
     else:
         form = UserCreationForm()

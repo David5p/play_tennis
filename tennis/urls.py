@@ -21,10 +21,12 @@ from django.contrib.auth import views as auth_views
 from booking import views
 
 urlpatterns = [
-    path('', views.home, name = 'home'),
+    path('', booking_views.home, name='home'),
     path('admin/', admin.site.urls),
-    path('booking/', include('booking.urls')),  # link to booking app
-    path('accounts/', include('django.contrib.auth.urls')),  # login/logout
-    path('register/', booking_views.register, name='register'),  # custom registration
+    path('booking/', include('booking.urls')),  # app URLs
+    path('login/', booking_views.CustomLoginView.as_view(),
+         name='login'),  # custom login with message
+    path('logout/', booking_views.logout_view,
+         name='logout'),  # logout with message
+    path('register/', booking_views.register, name='register'),  # registration
 ]
-
