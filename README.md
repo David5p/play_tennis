@@ -30,10 +30,8 @@ The website consists of a homepage which allow introduces the club and allows us
     - [Admin](#admin)
   - [Future Features](#future-features)
 - [Technologies Used](#technologies-used)
-  - [languages](#Languages)
-  - [Frameworks](#frameworks)
-  - [Libraries](#libraries)
-  - [Platforms](#platforms)
+  - [Languages](#languages)
+  - [Libraries and Frameworks](#libraries-and-frameworks)
   - [Other tools](#other-tools)
 - [Testing](#testing)
 - [Bugs](#bugs)
@@ -288,7 +286,7 @@ Wireframes: https://drive.google.com/file/d/1jKxvqleNVu_oNVqvZlpYt43qoXmn766d/vi
 - [JavaScript](https://www.w3schools.com/js/)
   Behaviour
 
-### Libraries & Frameworks
+### Libraries and Frameworks
 
 [Django 4.2.25](https://docs.djangoproject.com/en/5.2/releases/4.2.25/) - Free and open source Python Web Framework.
 
@@ -309,3 +307,33 @@ Wireframes: https://drive.google.com/file/d/1jKxvqleNVu_oNVqvZlpYt43qoXmn766d/vi
 [Whitenoise==6.11.0](https://pypi.org/project/whitenoise/) - WhiteNoise is used for serving static files in a Django application.
 
 [sqlparse==0.5.3](https://pypi.org/project/sqlparse/#history) - SQLParse is a library used for parsing SQL queries in Python.
+
+### Other Tools
+
+[GitHub](https://github.com/) - Storing code remotely and deployment.
+
+[Visual Studio Code](https://code.visualstudio.com/) - IDE for project development.
+
+[W3C Validator](https://validator.w3.org/) - A validator which checks the markup validity of Web documents in HTML.
+
+[W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/) - A validator which checks the validity of CSS code.
+
+[Code Institute's Python Linter](https://pep8ci.herokuapp.com/) - Highlights syntactical and stylistic problems in Python.
+
+[Chrome DevTools](http://developer.chrome.com/docs/devtools) - Web Developer Tools used to test responsiveness and styles.
+
+[User Interface](https://ui.dev/amiresponsive) - For responsive visuals of the website
+
+[Pexels](https://www.pexels.com/) - Used for the favicon image.
+
+[FAVPNG](https://favpng.com/) - Used an image for the logo on all site pages.
+
+[Coolors](https://coolors.co/) - Colour Palette Generator
+
+[Google Fonts](https://fonts.google.com/) - Fonts
+
+[Balsamiq](https://balsamiq.cloud/#) - Low Fidelity Wireframes
+
+## Testing
+
+All testing information can be found in [TESTING.md](TESTING.md).
