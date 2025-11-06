@@ -233,10 +233,6 @@ Wireframes: https://drive.google.com/file/d/1jKxvqleNVu_oNVqvZlpYt43qoXmn766d/vi
 
 - The website offers the owner the ability to view, edit and interact with the database in the Django Admin panel.
 
-<p align="center">
-  <img src="booking/static/booking/images/django_admin.png" alt="Admin login page">
-</p>
-
 - The admin panel is accessible by the addition of /admin at the end of the website's URL.
 
 - The user is then taken to the Django Administration Login page and asked to provide their login credentials. Only users with Superuser status can accesss the admin panel.
@@ -249,23 +245,23 @@ Wireframes: https://drive.google.com/file/d/1jKxvqleNVu_oNVqvZlpYt43qoXmn766d/vi
 
   - Add or remove users.
 
-            <p align="center">
-            <img src="booking/static/booking/images/django_admin2.png" alt="Django user page">
-
-          </p>
-            - Edit or delete court bookings.
-
-            <p align="center">
-
-          <img src="booking/static/booking/images/django_admin3.png" alt="Court bookings">
-        </p>
-            - Edit, delete or add courts.
-
-            <p align="center">
-
-      <img src="booking/static/booking/images/django_admin5.png" alt="Admin login page">
+    <p align="center">
+    <img src="booking/static/booking/images/django_admin2.png" alt="Django user page">
     </p>
-            - Filter bookings by name, court, date or using the search bar.
+
+  - Edit or delete court bookings.
+
+    <p align="center">
+    <img src="booking/static/booking/images/django_admin3.png" alt="Court bookings">
+    </p>
+
+  - Edit, delete or add courts.
+
+    <p align="center">
+    <img src="booking/static/booking/images/django_admin5.png" alt="Admin login page">
+    </p>
+
+  - Filter bookings by name, court, date or using the search bar.
 
 ### Future Features
 
@@ -276,3 +272,40 @@ Wireframes: https://drive.google.com/file/d/1jKxvqleNVu_oNVqvZlpYt43qoXmn766d/vi
 </p>
 
 - Other future plans for the site include, a forgotten password button that would allow users to reset their password, a photo gallery and tiered membership costs.
+
+## Technologies Used
+
+### Languages
+
+- [HTML5](https://www.w3schools.com/html/)
+  Page markup
+- [CSS](https://www.w3schools.com/css/default.asp)
+  Styling
+
+- [Python](https://www.python.org/)
+  Server-side development with Django
+
+- [JavaScript](https://www.w3schools.com/js/)
+  Behaviour
+
+### Libraries & Frameworks
+
+[Django 4.2.25](https://docs.djangoproject.com/en/5.2/releases/4.2.25/) - Free and open source Python Web Framework.
+
+[Gunicorn 20.1.0](https://docs.gunicorn.org/en/20.1.0/) - A Python WSGI HTTP server compatible with Django and used to run the project on Heroku.
+
+[PostgreSQL 15.13](https://www.postgresql.org/docs/release/15.13/) - A powerful, open-source object-relational database system.
+
+[Pyscopg2 2.9.10](https://pypi.org/project/psycopg2/2.9.10/) - A PostgreSQL database adapter for Python.
+
+[Heroku](https://www.heroku.com/) - A cloud platform as a service.
+
+[Django Allauth](https://docs.allauth.org/en/latest/) - Integrated set of Django applications addressing authentication and registration.
+
+[Django Crispy forms](https://django-crispy-forms.readthedocs.io/en/latest/) - Simplifies rendering and styling forms, allowing dynamic layouts with Bootstrap.
+
+[Bootstrap 5.3.2](https://getbootstrap.com/docs/5.3/getting-started/download/) - A Framework for building responsive, mobile-fist sites.
+
+[Whitenoise==6.11.0](https://pypi.org/project/whitenoise/) - WhiteNoise is used for serving static files in a Django application.
+
+[sqlparse==0.5.3](https://pypi.org/project/sqlparse/#history) - SQLParse is a library used for parsing SQL queries in Python.
