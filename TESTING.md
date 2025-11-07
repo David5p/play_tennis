@@ -29,3 +29,44 @@ I also performed some automated testing on the forms, models, views and urls. Th
 **HOME**
 
 ![No Errors or Warnings to show](booking/static/booking/images/validation/html_validator_home.png)
+
+**LOG IN**
+
+![No Errors or Warnings to show](booking/static/booking/images/validation/html_validator_login.png)
+
+**REGISTER**
+
+![No Errors or Warnings to show](booking/static/booking/images/validation/html_validator_register.png)
+
+**My Bookings**
+
+![No Errors or Warnings to show](booking/static/booking/images/validation/html_validator_my_bookings.png)
+
+**Edit Booking**
+
+![No Errors or Warnings to show](booking/static/booking/images/validation/html_validator_book_edit.png)
+
+</details>
+
+<br>
+
+### CSS
+
+- CSS code was tested using the [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/) via text input.
+
+- Some validator warnings appeared for lines using CSS variables (e.g., var(--main-color)). These are informational only because the validator cannot determine dynamic values. They do not indicate errors, and the CSS works correctly in browsers.
+
+<p align="center">
+  <img src="booking/static/booking/images/validation/css_validator_warnings.png" alt="CSS validator warnings">
+</p>
+<details>
+
+<summary>Screenshot with results for the styles.css file</summary>
+
+**styles.css**
+
+![No Error Found](booking/static/booking/images/validation/css_validator_clear.png)
+
+</details>
+
+<br>
