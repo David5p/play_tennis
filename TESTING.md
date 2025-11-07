@@ -16,4 +16,16 @@ I also performed some automated testing on the forms, models, views and urls. Th
 
 ### HTML
 
-The HTML validator reports errors due to Django template tags like `{% load static %}` and `{% block title %}`. These tags are not standard HTML, so the validator flags them as invalid. In practice, the template renders correctly in Django, making these validation errors harmless and expected.
+- HTML code was tested using the [W3C Validator](https://validator.w3.org/) via url.
+
+- I received 8 info alerts from the HTML validator relating to trailing slashes. This is due to the add on prettier formatting my HTML and they cannot be removed. The trailing slash on void elements doesn’t affect rendering or cause any errors in my code.
+
+- Initially, the `home.html` and `register.html` templates triggered a semantic HTML warning because they each contained a `<h1>` element, while `base.html` already included a `<h1>`. To resolve this, the page-specific headings were changed to `<h2>` to maintain proper heading hierarchy and improve accessibility.
+
+<details>
+<summary>Screenshots and results for all templates.</summary>
+<br>
+
+**HOME**
+
+![No Errors or Warnings to show](booking/static/booking/images/validation/html_validator_home.png)

@@ -298,8 +298,6 @@ Wireframes: https://drive.google.com/file/d/1jKxvqleNVu_oNVqvZlpYt43qoXmn766d/vi
 
 [Heroku](https://www.heroku.com/) - A cloud platform as a service.
 
-[Django Allauth](https://docs.allauth.org/en/latest/) - Integrated set of Django applications addressing authentication and registration.
-
 [Django Crispy forms](https://django-crispy-forms.readthedocs.io/en/latest/) - Simplifies rendering and styling forms, allowing dynamic layouts with Bootstrap.
 
 [Bootstrap 5.3.2](https://getbootstrap.com/docs/5.3/getting-started/download/) - A Framework for building responsive, mobile-fist sites.
