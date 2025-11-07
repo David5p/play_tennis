@@ -4,6 +4,7 @@ from datetime import date, time
 from booking.forms import BookingForm
 from booking.models import Court
 
+
 class BookingFormTests(TestCase):
 
     def setUp(self):

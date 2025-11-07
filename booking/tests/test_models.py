@@ -3,10 +3,14 @@ from booking.models import Court, Booking
 from django.contrib.auth.models import User
 from datetime import date, time
 
+
 class BookingModelTests(TestCase):
     def setUp(self):
-        self.user = User.objects.create_user(username='testuser', password='testpass')
-        self.court = Court.objects.create(name='Court 1', court_type='indoor', surface_type='hard')
+        self.user = User.objects.create_user(
+            username='testuser', password='testpass'
+        )
+        self.court = Court.objects.create(
+            name='Court 1', court_type='indoor', surface_type='hard')
 
     def test_time_on_the_hour_validation(self):
         from django.core.exceptions import ValidationError

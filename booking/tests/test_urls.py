@@ -1,7 +1,7 @@
 from django.test import SimpleTestCase
 from django.urls import reverse, resolve
-from booking.views import home, create_booking, my_bookings, register
 from booking import views
+
 
 class TestUrls(SimpleTestCase):
     def test_urls_resolve_to_correct_view(self):

@@ -47,11 +47,13 @@ def create_booking(request):
         if form.is_valid():
             booking = form.save(commit=False)
             booking.user = request.user
-            booking.name = request.user.get_full_name() or request.user.username
-
-            # Use the helper directly here
+            booking.name = (request.user.get_full_name()
+                            or request.user.username
+                            )
+            # Helper for double booking
             if user_has_conflicting_booking(
-                request.user, booking.date, booking.start_time, booking.end_time
+                request.user, booking.date,
+                booking.start_time, booking.end_time
             ):
                 messages.error(
                     request, "You already have a booking at that time.")

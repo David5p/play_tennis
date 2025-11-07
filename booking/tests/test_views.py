@@ -4,12 +4,15 @@ from booking.models import Court, Booking
 from django.contrib.auth.models import User
 from datetime import date, time
 
+
 class TestViews(TestCase):
 
     def setUp(self):
         self.client = Client()
-        self.user = User.objects.create_user(username='testuser', password='testpass')
-        self.court = Court.objects.create(name='Court 1', court_type= 'outdoor', surface_type='clay')
+        self.user = User.objects.create_user(
+            username='testuser', password='testpass')
+        self.court = Court.objects.create(
+            name='Court 1', court_type='outdoor', surface_type='clay')
 
         # URL names
         self.urls = {

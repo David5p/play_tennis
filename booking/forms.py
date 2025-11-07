@@ -3,11 +3,12 @@ from .models import Booking
 from datetime import date, time,  timedelta, datetime
 from django.core.exceptions import ValidationError
 
+
 class BookingForm(forms.ModelForm):
-    TIME_CHOICES = [(time(h, 0), f"{h:02d}:00")for h in range(7,22)]
-    
-    start_time = forms.ChoiceField(choices = TIME_CHOICES)
-    end_time = forms.ChoiceField(choices = TIME_CHOICES)
+    TIME_CHOICES = [(time(h, 0), f"{h:02d}:00")for h in range(7, 22)]
+
+    start_time = forms.ChoiceField(choices=TIME_CHOICES)
+    end_time = forms.ChoiceField(choices=TIME_CHOICES)
 
     class Meta:
         model = Booking
@@ -15,7 +16,7 @@ class BookingForm(forms.ModelForm):
         widgets = {
             'date': forms.DateInput(attrs={'type': 'date',
                                            'min': date.today()
-                                           .strftime('%Y-%m-%d')}), 
+                                           .strftime('%Y-%m-%d')}),
         }
 
     def clean_date(self):
@@ -28,10 +29,10 @@ class BookingForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop('user', None)
         super().__init__(*args, **kwargs)
-    
+
         if self.user:
             self.instance.user = self.user
-            self.instance.email = self.user.email  
+            self.instance.email = self.user.email
 
     def clean_start_time(self):
         """Convert the selected string back to a Python time object."""
@@ -39,9 +40,12 @@ class BookingForm(forms.ModelForm):
         if not value:
             raise forms.ValidationError("Please select a start time.")
         return time.fromisoformat(value)
-    
+
     def clean_end_time(self):
-        """Auto-set end_time to one hour after start_time if not manually chosen."""
+        """
+        Auto-set end_time to one hour after start_time
+        if not manually chosen.
+        """
         start = self.cleaned_data.get('start_time')
         end = self.cleaned_data.get('end_time')
 
@@ -54,8 +58,7 @@ class BookingForm(forms.ModelForm):
             return time.fromisoformat(end)
 
         raise forms.ValidationError("Please select an end time.")
-    
-    
+
     def clean(self):
         """Prevent overlapping bookings for the same user."""
         cleaned_data = super().clean()
@@ -73,6 +76,7 @@ class BookingForm(forms.ModelForm):
             ).exists()
 
             if overlap:
-                raise ValidationError("You already have a booking at this time.")
+                raise ValidationError(
+                    "You already have a booking at this time.")
 
         return cleaned_data
