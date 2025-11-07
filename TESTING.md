@@ -70,3 +70,49 @@ I also performed some automated testing on the forms, models, views and urls. Th
 </details>
 
 <br>
+
+### Python
+
+Python code was tested using [Code Institute's Python Linter](https://pep8ci.herokuapp.com/).
+
+<details>
+
+<summary>Screenshots and results for all python files</summary>
+
+- settings.py
+
+Line too long warning for line 85, 87, 88, 112 was unaltered as it is Django code and not making any alterations as advised by fellow Discord members.
+
+![All clear, no errors found](booking/static/booking/images/validation/linter_settings.png)
+
+- tennis urls.py
+
+![All clear, no errors found](booking/static/booking/images/validation/linter_tennis_urls.png)
+
+- booking urls.py
+
+![All clear, no errors found](booking/static/booking/images/validation/linter_booking_urls.png)
+
+- admin.py
+
+![All clear, no errors found](booking/static/booking/images/validation/linter_admin.png)
+
+- apps.py
+
+![All clear, no errors found](booking/static/booking/images/validation/linter_apps.png)
+
+- forms.py
+
+![All clear, no errors found](booking/static/booking/images/validation/linter_forms.png)
+
+- models.py
+
+![All clear, no errors found](booking/static/booking/images/validation/linter_forms.png)
+
+- views.py
+
+![All clear, no errors found](booking/static/booking/images/validation/linter_views.png)
+
+</details>
+
+<br>
