@@ -32,7 +32,7 @@
       <!-- Brand -->
         <a class="navbar-brand d-flex align-items-center text-white me-3" href="{% url 'home' %}">
   <img src="{% static 'booking/images/logo.png' %}" alt="Play Tennis Logo" class="logo me-2">
-  <h1 class="h4 mb-0 text-white">Play Tennis</h1>
+  <span class="h4 mb-0 text-white">Play Tennis</span>
 </a>
 
       <!-- Toggler -->
@@ -91,16 +91,19 @@
       <div class="col-md-4 mb-3">
         <h5 class="mb-0 pb-0">Follow Us</h5>
         <div class="d-flex flex-column align-items-center gap-2 social-media mt-2">
-          <a href="https://www.instagram.com" target="_blank" class="fs-2 text-black">
-            <i class="bi bi-instagram"></i>
+          <a href="https://www.instagram.com" target="_blank" class="fs-2 text-black" aria-label="Visit our Instagram page">
+            <i class="bi bi-instagram" aria-hidden="true"></i>
           </a>
-          <a href="https://twitter.com" target="_blank" class="fs-2 text-black">
-            <i class="bi bi-twitter"></i>
+
+          <a href="https://twitter.com" target="_blank" class="fs-2 text-black" aria-label="Visit our Twitter page">
+            <i class="bi bi-twitter" aria-hidden="true"></i>
           </a>
-          <a href="https://www.youtube.com" target="_blank" class="fs-2 text-black">
-            <i class="bi bi-youtube"></i>
+
+          <a href="https://www.youtube.com" target="_blank" class="fs-2 text-black" aria-label="Visit our YouTube channel">
+            <i class="bi bi-youtube" aria-hidden="true"></i>
           </a>
         </div>
+
       </div>
 
       <!-- Address -->

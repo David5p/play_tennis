@@ -132,3 +132,90 @@ Line too long warning for line 85, 87, 88, 112 was unaltered as it is Django cod
 </details>
 
 <br>
+
+### JavaScript
+
+The JavaScript code was tested using [JS Hint](https://jshint.com/).
+
+<details>
+
+<summary>Screenshots and results for JavaScript files</summary>
+
+- booking.js
+
+![All clear, no errors found](booking/static/booking/images/validation/jshint_booking_validator.png)
+
+</details>
+
+<br>
+
+## Lighthouse Testing
+
+[Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/) was used to audit the website for performance, accessibility, best practice and SEO. This was run in Chrome DevTools in incognito mode.
+
+<details>
+<summary>Screenshots and results for all pages</summary>
+
+**HOME**
+
+- Mobile
+
+![Passed](documentation/home-mob-lighthouse.png)
+
+- Desktop
+
+![Passed](documentation/home-lighthouse-desktop.png)
+
+**Login**
+
+- Mobile
+
+![Passed](documentation/menu-lighthouse-mob.png)
+
+- Desktop
+
+![Passed](documentation/menu-lighthouse-desktop.png)
+
+**Register**
+
+- Mobile
+
+![Passed](documentation/signup-lighthouse-mob.png)
+
+- Desktop
+
+![Passed](documentation/signup-lighthouse-desktop.png)
+
+**Book**
+
+- Mobile
+
+![Passed](documentation/signin-lighthouse-mob.png)
+
+- Desktop
+
+![Passed](documentation/signin-lighthouse-desktop.png)
+
+**My Bookings**
+
+- Mobile
+
+![Passed](documentation/logout-lighthouse-mob.png)
+
+- Desktop
+
+![Passed](documentation/logout-lighthouse-desktop.png)
+
+**Edit Booking**
+
+- Mobile
+
+![Passed](documentation/make-lighthouse-mob.png)
+
+- Desktop
+
+![Passed](documentation/make-lighthouse-desktop.png)
+
+</details>
+
+<br>
