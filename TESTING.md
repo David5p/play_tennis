@@ -153,6 +153,15 @@ The JavaScript code was tested using [JS Hint](https://jshint.com/).
 
 [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/) was used to audit the website for performance, accessibility, best practice and SEO. This was run in Chrome DevTools in incognito mode.
 
+- At the beginning of the Lighthouse testing, I noticed the performace of my website being negated by the high quality of my homepage image.
+  The performance rating was greatly improved upon the reduction of the file size.
+
+<p align="center">
+  <img src="booking/static/booking/images/validation/lighthouse_mobile_home_bad_perf.png" alt="CSS validator warnings">
+</p>
+
+- I also had to edit my HTML so that it followed HTML semantics as this was negatively affecting the accessibility score.
+
 <details>
 <summary>Screenshots and results for all pages</summary>
 
@@ -160,61 +169,61 @@ The JavaScript code was tested using [JS Hint](https://jshint.com/).
 
 - Mobile
 
-![Passed](documentation/home-mob-lighthouse.png)
+![Passed](booking/static/booking/images/validation/lighthouse_mobile_home.png)
 
 - Desktop
 
-![Passed](documentation/home-lighthouse-desktop.png)
+![Passed](booking/static/booking/images/validation/lighthouse_home_desktop.png)
 
 **Login**
 
 - Mobile
 
-![Passed](documentation/menu-lighthouse-mob.png)
+![Passed](booking/static/booking/images/validation/lighthouse_mobile_signin.png)
 
 - Desktop
 
-![Passed](documentation/menu-lighthouse-desktop.png)
+![Passed](booking/static/booking/images/validation/lighthouse_desktop_signin.png)
 
 **Register**
 
 - Mobile
 
-![Passed](documentation/signup-lighthouse-mob.png)
+![Passed](booking/static/booking/images/validation/lighthouse_mobile_register.png)
 
 - Desktop
 
-![Passed](documentation/signup-lighthouse-desktop.png)
+![Passed](booking/static/booking/images/validation/lighthouse_desktop_register.png)
 
 **Book**
 
 - Mobile
 
-![Passed](documentation/signin-lighthouse-mob.png)
+![Passed](booking/static/booking/images/validation/lighthouse_mobile_book.png)
 
 - Desktop
 
-![Passed](documentation/signin-lighthouse-desktop.png)
+![Passed](booking/static/booking/images/validation/lighthouse_desktop_book.png)
 
 **My Bookings**
 
 - Mobile
 
-![Passed](documentation/logout-lighthouse-mob.png)
+![Passed](booking/static/booking/images/validation/lighthouse_mobile_my_bookings.png)
 
 - Desktop
 
-![Passed](documentation/logout-lighthouse-desktop.png)
+![Passed](booking/static/booking/images/validation/lighthouse_desktop_my_bookings.png)
 
 **Edit Booking**
 
 - Mobile
 
-![Passed](documentation/make-lighthouse-mob.png)
+![Passed](booking/static/booking/images/validation/lighthouse_mobile_edit_bookings.png)
 
 - Desktop
 
-![Passed](documentation/make-lighthouse-desktop.png)
+![Passed](booking/static/booking/images/validation/lighthouse_desktop_edit_bookings.png)
 
 </details>
 
