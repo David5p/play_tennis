@@ -239,32 +239,54 @@ The website is responsive for screens with a mininum width of 320px and a maximu
 
 **Responsiveness on different devices**
 
-        Mobile - Galaxy s23
+        Mobile - Asus Zenfone 8
 
-![Samsung s23](documentation/samsung-s23.png)
+![ Asus Zenfone 8](booking/static/booking/images/responsiveness/responsiveness1.jpg)
 
-        Mobile - Galaxy s10
+        Mobile - Asus Zenfone 8
 
-![Samsung s10](documentation/samsung-s10.png)
+![Samsung s10](booking/static/booking/images/responsiveness/responsiveness_about.jpg)
 
-        Mobile - iPhone 13
+        Tablet - iPad - horizontal
 
-![iphone13](documentation/iphone13.png)
-
-        Tablet - iPad 10 - horizontal
-
-![ipad 10](documentation/ipad-horizontal.png)
+![ipad 10]()
 
         Tablet - iPad 10 - vertical
 
-![ipad 10](documentation/ipad-vertical.png)
-
-        Gaming/mac monitor - 1920*1080
-
-![Gaming and mac monitor](documentation/mac.png)
+![ipad 10]()
 
 <br>
-Live testing was also done on Redmi 11 note, Oppo, iphone11 mobiles and it was responsive.
+
+</details>
+
+<br>
+
+## Browser Compatibilty Testing
+
+Website was tested on current Chrome, Firefox and Edge for compatibility.
+
+<details>
+
+<summary>Table of the results.</summary>
+
+| Intended       | Chrome | Firefox | Edge | Safari |
+| -------------- | ------ | ------- | ---- | ------ |
+| Appearance     | Good   | Good    | Good | Good   |
+| Responsiveness | Good   | Good    | Good | Good   |
+
+**Responsiveness on different devices**
+
+        Chrome Browser
+
+![Home on mobile](booking/static/booking/images/responsiveness/responsiveness1.jpg)
+
+        Firefox Browser
+
+![Home on Desktop](booking/static/booking/images/responsiveness/firefox_view.png)
+
+        Edge Browser
+
+![Register on desktop](booking/static/booking/images/responsiveness/edge_register.png)
 
 </details>
 

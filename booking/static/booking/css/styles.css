@@ -234,7 +234,7 @@ ul.errorlist.nonfield {
   .navbar-nav .user-button,
   .navbar-nav .register-button {
     display: block; /* Stack options */
-    width: 60% /* enusres buttons are proportionally sizes */;
+    width: 60%;
     margin: 0.5rem auto;
   }
 }
