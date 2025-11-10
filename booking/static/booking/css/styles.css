@@ -127,14 +127,14 @@ h1 {
 }
 
 .confirm-booking {
-  background-color:rgba(45, 68, 44, 1) /* dark green for contrast*/ ;
+  background-color: rgba(45, 68, 44, 1) /* dark green for contrast*/;
   color: #ffffff;
   font-weight: bold;
   border: transparent;
 }
 
 .confirm-booking:hover {
-  background-color: rgba(17, 69, 80, 1)/*dark turquoise for contrast*/;
+  background-color: rgba(17, 69, 80, 1) /*dark turquoise for contrast*/;
   color: #ffffff;
 }
 a.user-button {
@@ -222,8 +222,6 @@ ul.errorlist.nonfield {
   color: #333;
   text-decoration: underline;
 }
-;
-}
 
 /* Adjust spacing in collapsed navbar for login and register buttons */
 @media (max-width: 767.98px) {
@@ -236,7 +234,7 @@ ul.errorlist.nonfield {
   .navbar-nav .user-button,
   .navbar-nav .register-button {
     display: block; /* Stack options */
-    width: 40% /* enusres buttons are proportionally sizes */;
+    width: 60% /* enusres buttons are proportionally sizes */;
     margin: 0.5rem auto;
   }
 }

@@ -228,3 +228,44 @@ The JavaScript code was tested using [JS Hint](https://jshint.com/).
 </details>
 
 <br>
+
+## Responsiveness Testing
+
+The website is responsive for screens with a mininum width of 320px and a maximum width of 2560px. Friends tested the website on their devices and found the website responsive. Further manual tests were done using [Chrome's DevTools](https://developer.chrome.com/docs/devtools) and the website proved to be responsive.
+
+<details>
+
+<summary>Screenshots of website at different screen sizes.</summary>
+
+**Responsiveness on different devices**
+
+        Mobile - Galaxy s23
+
+![Samsung s23](documentation/samsung-s23.png)
+
+        Mobile - Galaxy s10
+
+![Samsung s10](documentation/samsung-s10.png)
+
+        Mobile - iPhone 13
+
+![iphone13](documentation/iphone13.png)
+
+        Tablet - iPad 10 - horizontal
+
+![ipad 10](documentation/ipad-horizontal.png)
+
+        Tablet - iPad 10 - vertical
+
+![ipad 10](documentation/ipad-vertical.png)
+
+        Gaming/mac monitor - 1920*1080
+
+![Gaming and mac monitor](documentation/mac.png)
+
+<br>
+Live testing was also done on Redmi 11 note, Oppo, iphone11 mobiles and it was responsive.
+
+</details>
+
+<br>
