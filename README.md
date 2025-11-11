@@ -357,3 +357,66 @@ Added the meta viewport tag to `base.html`. After this change, the navbar collap
 ![Application fix](booking/static/booking/images/responsiveness/navbar_fix.png)
 
 </details>
+<details>
+<summary>Booking Bug</summary>
+
+**Problem:**  
+Both the Superuser and an regular user could book a tennis court for as many hours as they desired.
+
+![Long court booking](booking/static/booking/images/admin_booking_bug1.png)
+
+**Cause:**  
+My models.py did not contain a custom validation helper to limit the number of hours for a booking.
+
+**Solution:**  
+A custom validation helper was added to models.py to limit any single court booking to a maximum of 3 hours.
+If a user attempts to exceed this limit, an error message is displayed.
+However, this solution does not prevent users from making multiple consecutive bookings that total more than 3 hours on the same court.
+
+![court booking fix](booking/static/booking/images/bug_booking_fixed.png)
+
+</details>
+
+<details>
+
+<summary>Closing Time Booking Bug</summary>
+
+**Problem:**
+The tennis club should allow bookings from 07:00 to 21:00, but users could not book beyond 20:00.
+
+![Long court booking](booking/static/booking/images/bug_booking_site.png)
+
+**Cause:**
+In `forms.py`, the time range was defined using `range(7, 21)`.
+Since Python’s `range()` excludes the end value, 21:00 was not included, preventing users from booking that final hour.
+
+**Solution:**
+Updated the upper limit from 21 to 22 in the time range definition.
+This ensures users can now make bookings up until 21:00, matching the intended closing time. I found the solution to this issue regarding the range on [Stack Overflow](https://stackoverflow.com/questions/4504662/why-does-rangestart-end-not-include-end)
+
+![Closing time fix](booking/static/booking/images/bug_booking_site_fixed.png)
+
+</details>
+
+### Bugs Remaining
+
+<details>
+
+<summary>Booking Edit Overlap Bug</summary>
+
+**Problem:**  
+When a user edits an existing booking — for example, changing a reservation from 12:00–14:00 to 13:00–14:00 on the same day — the system displays an error saying the user already has a booking at that time.
+
+**Cause:**  
+The booking validation currently checks for overlapping times across all of a user’s bookings. When editing a booking, this check also includes the booking being edited, which causes the system to incorrectly detect a conflict with itself.
+
+**Potential Solution:**  
+The validation logic would need to be adjusted so that when a booking is being edited, the system temporarily removes that booking from the overlap check. This would allow users to shorten or slightly move their existing bookings without triggering a false overlap error.
+
+**Status:**  
+This issue remains unresolved. Users can still successfully edit bookings as long as the new time does not overlap with their existing reservation (for example, moving the booking to a different time block or day).
+
+![Booking](booking/static/booking/images/upcoming_booking.png)  
+![Booking Edit Error](booking/static/booking/images/upcoming_booking_error.png)
+
+</details>
