@@ -420,3 +420,171 @@ This issue remains unresolved. Users can still successfully edit bookings as lon
 ![Booking Edit Error](booking/static/booking/images/upcoming_booking_error.png)
 
 </details>
+
+## Deployment
+
+The project was deployed early to [Heroku](https://www.heroku.com) in order to save time and avoid any errors at the end of the project.
+
+After installing Django and the supporting libraries, the basic Django project was created and migrated to the database.
+
+The database provided by Django, [db.sqlite3](https://docs.python.org/3/library/sqlite3.html), is only accessible within the local workspace environment. To allow Heroku to access the database, a new production-ready database must be created. While Heroku offers a PostgreSQL add-on at an additional cost, I am using a PostgreSQL database instance hosted on [CI Database](https://dbs.ci-dbs.net/), which is a free service.
+
+<details>
+<summary>Before deploying the project to Heroku</summary>
+
+### Create the Heroku App
+
+1. Login to Heroku and click on the top right button ‘New’ on the dashboard.
+2. Click ‘Create new app’.
+3. Give the app a unique name and select the region.
+4. Click on the ‘Create app’ button.
+
+### Create the PostgreSQL Database
+
+1. Login to https://dbs.ci-dbs.net/.
+2. step 1: enter your email address and submit.
+3. step 2: creates a database.
+4. step 3: receive the database link on your email id.
+
+Here’s a polished copy-and-paste version for your README with links included:
+
+---
+
+### Create the `env.py` file
+
+With the database created, it now needs to be connected to the project. Certain variables must be kept private and should not be published to GitHub.
+
+1. To keep these variables hidden, create an `env.py` file and add it to `.gitignore`.
+2. At the top of the file, **import `os`** and set the `DATABASE_URL` variable using the `os.environ` method. Add the URL copied from the database instance created above, like so:
+
+   ```python
+   os.environ["DATABASE_URL"] = "copiedURL"
+   ```
+
+3. The Django application requires a `SECRET_KEY` to encrypt session cookies. Set this variable to any string you like, or generate a secret key using [MiniWebTool](https://miniwebtool.com/django-secret-key-generator/):
+
+   ```python
+   os.environ["SECRET_KEY"] = "longSecretString"
+   ```
+
+### Modify settings.py
+
+It is important to make the Django project aware of the env.py file and to connect the workspace to the new database.
+
+1. Open up the settings.py file and add the following code. The if statement acts as a safety net for the application in case it is run without the env.py file.
+
+```
+import os
+import dj_database_url
+
+if os.path.isfile(‘env.py’):
+    import env
+```
+
+2. Remove the insecure secret key provided by Django and reference the variable set in the env.py file earlier, like so:
+
+```
+SECRET_KEY = os.environ.get(‘SECRET_KEY’)
+```
+
+Here’s a polished version for your README with links included where needed:
+
+---
+
+### Link Up the Database
+
+3. Use the `dj_database_url` import added above to connect your Django project to the production database.
+
+The original `DATABASES` variable provided by Django connects the application to the `db.sqlite3` database within your repository. This database is not suitable for production, so comment out the existing `db.sqlite3` configuration and replace it with the following command to use the new database:
+
+```python
+DATABASES['default'] = dj_database_url.parse(os.environ.get('DATABASE_URL'))
+```
+
+```
+# Database
+# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
+
+# DATABASES = {
+#   'default': {
+#       'ENGINE': 'django.db.backends.sqlite3',
+#       'NAME': BASE_DIR / 'db.sqlite3',
+#   }
+# }
+
+DATABASES = {
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+}
+```
+
+5. Save and migrate this database to the connected postgreSQL database. Run the migrate command in the terminal
+   `python3 manage.py migrate`
+
+### Connect the Database to Heroku
+
+1. Open up the Heroku dashboard, select the project’s app and click on the ‘Settings’ tab.
+2. Click on ‘Reveal Config Vars’ and add the DATABASE_URL with the value of the copied URL from the database created on CI database.
+3. Then add the SECRET_KEY with the value of the secret key added to the env.py file.
+
+### Setup the Templates Directory
+
+In settings.py, add the following under BASE_DIR
+`DIRS = os.path.join(BASE_DIR, "templates")`
+
+### Add the Heroku Host Name
+
+In settings.py add the Heroku host name to ALLOWED_HOSTS. This should be the Heroku app name created earlier followed by `.herokuapp.com`. Add in the `’localhost’` as well so that it can be run locally.
+
+```
+ALLOWED_HOSTS = [‘heroku-app-name.herokuapp.com’, ‘localhost’]
+```
+
+### Create the Directories and the Process File
+
+1. Create the media, static and templates directories at the top level next to the manage.py file.
+2. At the same level create a new file called ‘Procfile’ with a capital ‘P’. This tells Heroku how to run this project.
+3. Add the following code, including the name of your project directory.
+
+```
+web: gunicorn tailors_thimble.wsgi
+```
+
+- ‘web’ tells Heroku that this a process that should accept HTTP traffic.
+- ‘gunicorn’ is the server used.
+- ‘wsgi’, stands for web services gateway interface and is a standard that allows Python services to integrate with web servers.
+
+4. Save everything and push to GitHub.
+
+</details>
+
+<details>
+<summary>First Deployment</summary>
+
+### First Deployment
+
+1. Go back to the Heroku dashboard and click on the ‘Deploy’ tab.
+2. For deployment method, select ‘GitHub’ and search for the project’s repository from the list.
+3. Click on ‘Deploy Branch’.
+4. When the build log is complete it should say that the app has been successfully deployed.
+5. Click on the ‘Open App’ button to view it and the Django “The install worked successfully!” page, should be displayed.
+
+</details>
+
+<details>
+<summary>Final Deployment</summary>
+
+Here’s a polished version you can copy and paste for your README:
+
+---
+
+<details>
+
+### Final Deployment
+
+1. Ensure that `DEBUG` is set to `False` in `settings.py` before deploying to production. If you used an environment variable approach like `DEBUG = 'DEVELOPMENT' in os.environ`, no changes are needed since your `env.py` is ignored by GitHub.
+2. Commit and push your final code to your GitHub repository.
+3. In Heroku, go to your app’s **Settings** tab and remove the `DISABLE_COLLECTSTATIC` variable from the Config Vars.
+4. Navigate to the **Deploy** tab and scroll down to **Deploy a GitHub branch**.
+5. Select the branch you want to deploy and click **Deploy Branch**. Once deployment completes, the build log should display: _“Your app was successfully deployed”_. Click **View** or **Open App** at the top of the page to open your deployed application in the browser.
+
+</details>
