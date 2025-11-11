@@ -29,7 +29,6 @@ class BookingFormTests(TestCase):
     def test_booking_form_missing_field(self):
         """Form should be invalid when required fields are blank"""
         form = BookingForm(data={
-            'name': '',
             'email': '',
             'court': '',
             'date': '',
@@ -37,8 +36,8 @@ class BookingFormTests(TestCase):
             'end_time': '',
         })
         self.assertFalse(form.is_valid())
-        self.assertIn('name', form.errors)
         self.assertIn('email', form.errors)
+        self.assertIn('date', form.errors)
 
     def test_booking_form_invalid_time(self):
         """Form should be invalid when end_time is before start_time"""

@@ -10,6 +10,7 @@ I also performed some automated testing on the forms, models, views and urls. Th
 - [Lighthouse](#lighthouse-testing)
 - [Responsiveness](#responsiveness-testing)
 - [Browser Compatibility](#browser-compatibilty-testing)
+- [Automated Testing](#automated-testing)
 - [User Stories](#user-story-testing)
 
 ## Code Validation
@@ -291,3 +292,16 @@ Website was tested on current Chrome, Firefox and Edge for compatibility.
 </details>
 
 <br>
+
+## Automated Testing
+
+- The use of automated testing ensures the app works correctly, catching bugs early and verifying forms, models, URLs, and views behave as expected. It allows safe updates and feature additions. This improves reliability, maintainability, and overall confidence in the project’s functionality.
+
+- The booking/tests/test_forms.py file ensures that the BookingForm correctly validates user input, including required fields and logical constraints like start and end times.
+
+- The booking/tests/test_models.py verifies the Booking model’s behavior, checking that bookings conform to rules such as hourly start times and can be saved properly.
+- The booking/tests/test_urls.py confirms that URL patterns resolve to the correct views, ensuring proper routing.
+
+- Finally, the booking/tests/test_views.py tests the views’ functionality, including access control, form submission, and page responses, ensuring the web interface behaves as expected for both authenticated and anonymous users.
+
+![Passed](booking/static/booking/images/validation/testing_py.png)
