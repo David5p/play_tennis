@@ -335,3 +335,107 @@ Wireframes: https://drive.google.com/file/d/1jKxvqleNVu_oNVqvZlpYt43qoXmn766d/vi
 ## Testing
 
 All testing information can be found in [TESTING.md](TESTING.md).
+
+## Bugs
+
+Bbugs discovered have been resolved. However. there could ramain unknown bugs, which were not found during the testing process.
+
+<details>
+<summary>Early Deployment Bug</summary>
+
+Problem: When a deployment was made on Heroku, The navbar was not showing or functioning
+
+        Application error
+
+![Application error](documentation/applicationerror.png)
+
+Solution: This issue was shorted out by updating my Procfile with correct file name.
+
+</details>
+<details>
+<summary>Bugs during Development</summary>
+
+Problem: Tried to use sticky-top class on navbar but on midway it stops working on menu page on mobile.
+
+Solution: Removed sticky-top class as suggested by my mentor.
+
+Problem: Phone field was not accepting all combination of number, since it was an integer field.
+
+        Phone field error
+
+![Phone field error](documentation/phonefieldbug.png)
+
+Solution: This issue was shorted out by changing the phonefield to charField and also by recreating a new database file as there was problem in Deployment.
+
+Problem: since the Phone field was changed from integer to string, there was database, session error.
+
+        Database error
+
+![Database error](documentation/databaseerror.png)
+
+Solution: This issue was shorted out by changing the database url as too many manipulation on previous database file was not allowing the changes in deployment. A new superuser was created to overcome this error as advised by Tutor.
+
+</details>
+
+<details>
+<summary>Bugs encountered during Testing</summary>
+
+**Make a reservation Form Fields**
+
+Problem: Name field accepting all the characters including special chars and numbers
+
+Solution: Validation included to accept only alphabets.
+
+```
+if not value.isalpha():
+        raise ValidationError(
+            'Name can only contain alphabetic characters. '
+            'Please check your entry.'
+        )
+```
+
+Problem: Date field accepting past date and all future dates
+
+Solution: Validation included to accept only current date and future date upto 6 months.
+
+```
+today = timezone.now().date()
+    # Approximation for 6 months
+    six_months_from_today = today + datetime.timedelta(days=6*30)
+    if not (today <= value <= six_months_from_today):
+        raise ValidationError(
+            "Reservation date must be between today and the next 6 months.")
+```
+
+Problem: Seat field accepting zero and negative numbers
+
+Solution: Two diff validation included to accept only number from 1 till the capacity of the Table size.
+
+```
+if value <= 0:
+        raise ValidationError(
+            'The number of guests must be greater than zero. '
+            'Please enter a valid number.'
+        )
+
+if table and guests:
+            if guests > table.capacity:
+                self.add_error('guests', f"The number of guests exceeds the "
+                               f"table's capacity of {table.capacity}. "
+                               f"Please choose another table.")
+```
+
+Problem: Note field accepting unlimited number characters.
+
+Solution: Validation included to accept only characters upto 1000.
+
+```
+notes = forms.CharField(
+        max_length=1000,
+        widget=forms.Textarea(
+            attrs={'class': 'form-control', 'maxlength': 1000}
+        )
+)
+```
+
+</details>
