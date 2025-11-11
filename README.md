@@ -446,10 +446,6 @@ The database provided by Django, [db.sqlite3](https://docs.python.org/3/library/
 3. step 2: creates a database.
 4. step 3: receive the database link on your email id.
 
-Here’s a polished copy-and-paste version for your README with links included:
-
----
-
 ### Create the `env.py` file
 
 With the database created, it now needs to be connected to the project. Certain variables must be kept private and should not be published to GitHub.
@@ -486,10 +482,6 @@ if os.path.isfile(‘env.py’):
 ```
 SECRET_KEY = os.environ.get(‘SECRET_KEY’)
 ```
-
-Here’s a polished version for your README with links included where needed:
-
----
 
 ### Link Up the Database
 
@@ -569,13 +561,6 @@ web: gunicorn tailors_thimble.wsgi
 5. Click on the ‘Open App’ button to view it and the Django “The install worked successfully!” page, should be displayed.
 
 </details>
-
-<details>
-<summary>Final Deployment</summary>
-
-Here’s a polished version you can copy and paste for your README:
-
----
 
 <details>
 
