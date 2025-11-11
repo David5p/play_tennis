@@ -223,6 +223,10 @@ ul.errorlist.nonfield {
   text-decoration: underline;
 }
 
+#footer p {
+  overflow-wrap: break-word;
+}
+
 /* Adjust spacing in collapsed navbar for login and register buttons */
 @media (max-width: 767.98px) {
   .navbar-nav .nav-item {

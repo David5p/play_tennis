@@ -1,6 +1,6 @@
 # Manual and Automated Testing
 
-Both manual and automated testing were crucial in ensuring my website was functional. Manual testing ensured all features worked as intended. This included testing booking, editing, and canceling court bookings. This was tested from the user login and admin side. It verifies usability, detects interface issues, and confirms workflow logic. By simulating real user interactions such as creating an account, making court bookings, it helps identify bugs, improve user experience, and ensure the site meets functional requirements.
+Both manual and automated testing were crucial in ensuring my website was functional. Manual testing verified key features including booking, editing, and canceling courts, from both user and admin perspectives, ensuring usability and workflow correctness. By simulating real user interactions such as creating an account, making court bookings, it helps identify bugs, improve user experience, and ensure the site meets functional requirements.
 
 I also performed some automated testing on the forms, models, views and urls. This helped to verify that each component of the tennis booking website functions as expected. They quickly ensure data integrity, validate routing, and confirm form behavior. The use of automated testing increases reliability and reduces the risk of introducing bugs during updates or new feature additions.
 
@@ -9,9 +9,8 @@ I also performed some automated testing on the forms, models, views and urls. Th
 - [Code Validation](#code-validation)
 - [Lighthouse](#lighthouse-testing)
 - [Responsiveness](#responsiveness-testing)
-- [Browser Compatibility](#browser-compatibilty-testing)
-- [Automated Testing](#automated-testing)
-- [User Stories](#user-story-testing)
+- [Browser Compatibility](#browser-compatibility-testing)
+- [Automated Testing of user stories](#automated-testing-of-user-stories)
 
 ## Code Validation
 
@@ -246,15 +245,15 @@ The website is responsive for screens with a mininum width of 320px and a maximu
 
         Mobile - Asus Zenfone 8
 
-![Samsung s10](booking/static/booking/images/responsiveness/responsiveness_about.jpg)
+![Asus Zenfone 8](booking/static/booking/images/responsiveness/responsiveness_about.jpg)
 
-        Tablet - iPad - horizontal
+        Tablet - iPad 6 - horizontal
 
-![ipad 10]()
+![ipad 6](booking/static/booking/images/responsiveness/ipad_horizontal.jpg)
 
-        Tablet - iPad 10 - vertical
+        Tablet - iPad 6 - vertical
 
-![ipad 10]()
+![ipad 6](booking/static/booking/images/responsiveness/ipad_vertical.jpg)
 
 <br>
 
@@ -262,7 +261,7 @@ The website is responsive for screens with a mininum width of 320px and a maximu
 
 <br>
 
-## Browser Compatibilty Testing
+## Browser Compatibility Testing
 
 Website was tested on current Chrome, Firefox and Edge for compatibility.
 
@@ -293,9 +292,9 @@ Website was tested on current Chrome, Firefox and Edge for compatibility.
 
 <br>
 
-## Automated Testing
+## Automated Testing of User Stories
 
-- The use of automated testing ensures the app works correctly, catching bugs early and verifying forms, models, URLs, and views behave as expected. It allows safe updates and feature additions. This improves reliability, maintainability, and overall confidence in the project’s functionality.
+- The use of automated testing ensures the app works correctly and that all user stories developed using agile methodology have been achieved as expected. It enables catching bugs early and verifying forms, models, URLs, and views behave as expected. It allows safe updates and feature additions. This improves reliability, maintainability, and overall confidence in the project’s functionality.
 
 - The booking/tests/test_forms.py file ensures that the BookingForm correctly validates user input, including required fields and logical constraints like start and end times.
 
