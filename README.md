@@ -592,12 +592,33 @@ Forking allows you to view and edit the code without affecting the original repo
 <details>
 <summary>Steps to Creating a Local Clone</summary>
 
-1. Go to the GitHub repository which can be found [here](https://github.com/David5p/play_tennis).
-2. Select 'Code' to the right of the screen. This will lead to a dropdown. Click on HTTPs and copy the link.
-3. Open Git Bash in your integrated development environment (IDE) and change the current working directory to the location where you want the cloned directory.
-4. Type `git clone`, paste the URL you copied earlier, and press Enter to create your local clone.
+1. On GitHub.com, navigate to the repository which can be found [here](https://github.com/David5p/play_tennis).
+2. Above the list of files, click the **Code** dropdown button which will bring up a list of options.
+3. Where the URL appears in the dropdown, **copy the URL**.
+4. Open **Git Bash**.
+5. Change the current working directory to the location where you want to keep the cloned directory.
+6. Type `git clone` followed by pasting the URL you copied earlier.
+7. Press **Enter**, and your local clone will be created.
 
 More information on Creating and Managing repositories can be found [here](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository?versionId=free-pro-team%40latest&productId=repositories&restPage=creating-and-managing-repositories%2Ccloning-a-repository#cloning-a-repository)
+
+The live link to the website can be found here: [Play Tennis](https://play-tennis-83df5b15f521.herokuapp.com/)
+
 <br>
 
 </details>
+
+## Credit
+
+- I referred to the I Think Therefore I blog project for creating my initial structure and the set up of Django
+- I also followed the same steps for Heroku deployment as directed in the walkthrough project.
+- The Testing Times module was also very useful to support me in creating my automated tests.
+- I used StackOverflow a few times as mentioned in my Bugs section to help me resolve issues.
+- My mentor also supported me when their was an error on my form where the email field was causing a problem with validation. Django expected to find the email field but it was not included leading to the validation to fail.
+
+During development, the following resources were frequently used:
+
+- [Django Documentation](https://docs.djangoproject.com/en/3.2/)
+- [Bootstrap Documentation](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
+- [W3Schools](https://www.w3schools.com/) — for general troubleshooting and information on features.
+- [ChatGPT](https://chatgpt.com/) — used for explaining framework behaviour and providing examples during development
