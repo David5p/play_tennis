@@ -42,6 +42,22 @@ The website features a homepage that introduces the club and allows users to mak
 
 The Play Tennis website is a responsive application which functions seamlessly on small screens as well as on your desktop. The website allows users to book from a range of different tennis courts. The website is for tennis players of all levels and uses the Bootstrap front end framework and the Django web application framework.
 
+### Database Schema
+
+The ERD was created using [Lucidchart](https://lucid.app/) and exported as a PDF.
+
+The database structure for this project was designed using Django’s models framework.  
+The following Entity Relationship Diagram (ERD) illustrates the relationship between the **Court** and **Booking** models.
+
+You can view or download it here:  
+[View ERD](https://drive.google.com/file/d/1ba4_luaFhkiyJaBerHwec1cM0y2IGmR8/view?usp=drive_link)
+
+Each court can have multiple bookings, represented by a **one-to-many relationship** (one court can have many bookings).  
+Key fields include:
+
+- **Court model:** `id (PK)`, `name`, `court_type`
+- **Booking model:** `id (PK)`, `court_id (FK)`, `name`, `email`, `date`, `start_time`
+
 ## Agile Methodology
 
 I used the Agile methodology focusing on planning the project in iterative cycles and placing the different user stories under different epic headings.
@@ -329,6 +345,8 @@ Each User Story was recorded in [GitHub Issues](https://github.com/David5p/play_
 [Coolors](https://coolors.co/) - Colour Palette Generator
 
 [Google Fonts](https://fonts.google.com/) - Fonts
+
+[Lucidchart](https://lucid.app/) - Entity Relationship diagram (ERD)
 
 [Balsamiq](https://balsamiq.cloud/#) - Low Fidelity Wireframes
 
