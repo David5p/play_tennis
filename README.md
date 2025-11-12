@@ -2,7 +2,7 @@
 
 Play Tennis is a full-stack, responsive website built for a fictional tennis court booking system for tennis players of all levels.
 
-The website consists of a homepage which allow introduces the club and allows users to book from the homepage. There is also sign up page which allows users to create an account and start making court bookings. Once users have logged in, they can manage their court bookings.
+The website features a homepage that introduces the club and allows users to make court bookings directly. There is also a sign up page which allows users to create an account and start making court bookings. Once users have logged in, they can manage their court bookings.
 
 <p align="center">
   <img src="booking/static/booking/images/responsiveness/responsiveness.png" alt="Website appearance on all devices">
@@ -19,7 +19,7 @@ The website consists of a homepage which allow introduces the club and allows us
     - [Wireframes](#wireframes)
     - [Fonts](#fonts)
     - [Icon](#icon)
-    - [Colors](#colors)
+    - [Colours](#colours)
     - [Images](#images)
     - [Styling](#styling)
 - [Features](#features)
@@ -38,17 +38,17 @@ The website consists of a homepage which allow introduces the club and allows us
 - [Deployment](#deployment)
 - [Credits](#credits)
 
-# Overview
+## Overview
 
-The Play Tennis website is a responsive applications which functions seemlessly on small screens as on your desktop. The website allows users to book from a range of different tennis courts. The website is for tennis players of all levels and uses the Bootstrap front end framework and the Django web application framework.
+The Play Tennis website is a responsive application which functions seamlessly on small screens as well as on your desktop. The website allows users to book from a range of different tennis courts. The website is for tennis players of all levels and uses the Bootstrap front end framework and the Django web application framework.
 
-# Agile Methodology
+## Agile Methodology
 
-I used the Agile methodology focussing on planning the project in iterative cycles and placing the different user stories under different epic headings.
+I used the Agile methodology focusing on planning the project in iterative cycles and placing the different user stories under different epic headings.
 
 The planning of the project was a fluid process as my user stories, which contained acceptance criteria and tasks, scope was initially too big and they needed to be broken down into smaller user stories.
 
-The [MoSCoW Method of Prioritisation](https://www.agilebusiness.org/dsdm-project-framework/moscow-prioririsation.html) was also used. This proved to be a vital tool in priritising the importance of each user story because dividing them up into "Must Have's", "Should Have's", "Could Have's" and "Won't Have's". This provided a clear direction with a large focus on ensuring the "Must Have's" were achieved and the "Won't Have's" providing ideas on the development of the website in the future but not to be achieved at this stage. In other words, the user stories were written to achieve the Minimum Viable Product(MVP).
+The [MoSCoW Method of Prioritisation](https://www.agilebusiness.org/dsdm-project-framework/moscow-prioririsation.html) was also used. This proved to be a vital tool in prioritising the importance of each user story because dividing them up into "Must Have's", "Should Have's", "Could Have's" and "Won't Have's". This provided a clear direction with a large focus on ensuring the "Must Have's" were achieved and the "Won't Have's" providing ideas on the development of the website in the future but not to be achieved at this stage. In other words, the user stories were written to achieve the Minimum Viable Product(MVP).
 
 <details>
 <summary>Here are screenshots of my Kanban Board below:</summary>
@@ -61,9 +61,9 @@ The [MoSCoW Method of Prioritisation](https://www.agilebusiness.org/dsdm-project
 
 Each user story was also placed under an Epic title of one of Admin Management, Booking System, Security and Validation, Court Management, User Authentication and Profiles or User Interface and Experience. This helped organize the tasks and ensured alignment with objectives.
 
-# User Experience
+## User Experience
 
-## Goals
+### Goals
 
 Play Tennis aims to provide a platform where tennis players can manage their bookings for tennis courts at the local club. Visitors are given an introduction to the club and the address is listed in the footer. The button to book courts features prominently on the homepage in both the navbar and on the main image of the site.
 
@@ -119,41 +119,41 @@ Each User Story was recorded in [GitHub Issues](https://github.com/David5p/play_
 
 ### Wireframes
 
-Wireframes: https://drive.google.com/file/d/1jKxvqleNVu_oNVqvZlpYt43qoXmn766d/view?usp=drive_link
+[Wireframes](https://drive.google.com/file/d/1jKxvqleNVu_oNVqvZlpYt43qoXmn766d/view?usp=drive_link)
 
 - I used Balsamiq for my wireframes. The design for desktop and mobile screens is similar with the main difference the navbar. On mobile screens the navbar menu changes to a burger icon.
 
 ### Fonts
 
-- The primary font, Bebas Neue was chosen because it provides a modern and professional look text. It is a font that provides a strong visual impact and works effectively for main headings and sub headings. This sans-serif font is versatile and combines well with my color schemes across the website as well as my secondary font choice.
+- The primary font, Bebas Neue was chosen because it provides a modern and professional look text. It is a font that provides a strong visual impact and works effectively for main headings and sub headings. This sans-serif font is versatile and combines well with my colour schemes across the website as well as my secondary font choice.
 
 - The secondary font, Roboto was chosen for its readability and the reliable pair it makes with Bebas Neue. It provides a modern feel and the rounded, natural letter shapes give it warmth and approachability. Roboto functions well as my font choice for body text.
 
 ### Icons
 
 - The favicon is an [image of a tennis ball reflecting off the court surface](https://www.pexels.com/photo/selective-focus-photography-of-tennis-ball-on-floor-2352372/).
-- My Favicon was then generated by [favicon.io](https://favicon.io/) and the color of the court matches my color scheme well.
+- My Favicon was then generated by [favicon.io](https://favicon.io/) and the colour of the court matches my colour scheme well.
 - [The logo showing two rackets](https://favpng.com/png_view/tennis-racket-tennis-rackets-and-ball-simple-illustration-png/9bB5bFUg#google_vignette) looks stylish in my navbar and I wanted an image with two rackets to demonstrate an interaction for the club where people come and play together.
 
-### Colors
+### Colours
 
 <p align="center">
-  <img src="booking/static/booking/images/coolors.png" alt="Website color choices">
+  <img src="booking/static/booking/images/coolors.png" alt="Website colour choices">
 </p>
 
-- I picked the colors (image above is a screenshot taken from [Coolors](https://coolors.co/)) of the website from the hero image using an [image color picker](https://imagecolorpicker.com/) tool to help me with my choices.
+- I picked the colours (image above is a screenshot taken from [Coolors](https://coolors.co/)) of the website from the hero image using an [image colour picker](https://imagecolorpicker.com/) tool to help me with my choices.
 
 <p align="center">
   <img src="booking/static/booking/images/color_palette_main_image.png" alt="Colors from the main image">
 </p>
 
-- I have to vary some of the shades of my color choice from the main image to ensure the contrast was sufficient. For example, You can see below that I needed to darken the mifnight green navbar color to have the menu text in white and meet the contrast requirements.
+- I have to vary some of the shades of my colour choice from the main image to ensure the contrast was sufficient. For example, You can see below that I needed to darken the midnight green navbar colour to have the menu text in white and meet the contrast requirements.
 
 <p align="center">
-  <img src="booking/static/booking/images/color_choice_checker.png" alt="Color contrast">
+  <img src="booking/static/booking/images/color_choice_checker.png" alt="Colour contrast">
 </p>
 
-- After the selection of the midnight green background for my navbar inside the header, I chose a background color of silver for my footer. I had initially considered midnight green for my footer as well but realised this can make the page seem monotonous and the use of a contrast helps create a clear structure.
+- After the selection of the midnight green background for my navbar inside the header, I chose a background colour of silver for my footer. I had initially considered midnight green for my footer as well but realised this can make the page seem monotonous and the use of a contrast helps create a clear structure.
 
 - The silver and midnight green pairing provides a clean and modern aesthetic that feels calm, stable, and visually harmonious.
 
@@ -164,7 +164,7 @@ Wireframes: https://drive.google.com/file/d/1jKxvqleNVu_oNVqvZlpYt43qoXmn766d/vi
 ### Styling
 
 - I used Bootstrap 5.3 grid system where possible to support with positioning, text style and size.
-- I have applied my preferred colors and fonts using custom css.
+- I have applied my preferred colours and fonts using custom css.
 - I applied custom styles to the base.html so that all my pages had the same structure, layout and styles.
 - I have added in JavaScript so that the end time automatically sets an hour later than the start time.
 
@@ -233,7 +233,7 @@ Wireframes: https://drive.google.com/file/d/1jKxvqleNVu_oNVqvZlpYt43qoXmn766d/vi
 
 - The admin panel is accessible by the addition of /admin at the end of the website's URL.
 
-- The user is then taken to the Django Administration Login page and asked to provide their login credentials. Only users with Superuser status can accesss the admin panel.
+- The user is then taken to the Django Administration Login page and asked to provide their login credentials. Only users with Superuser status can access the admin panel.
 
 <p align="center">
   <img src="booking/static/booking/images/django_admin.png" alt="Admin login page">
@@ -338,7 +338,7 @@ All testing information can be found in [TESTING.md](TESTING.md).
 
 ## Bugs
 
-Bbugs discovered have been resolved. However. there could ramain unknown bugs, which were not found during the testing process.
+Bugs discovered have been resolved. However. there could remain unknown bugs, which were not found during the testing process.
 
 <details>
 <summary>Early Deployment Bug</summary>
@@ -361,7 +361,7 @@ Added the meta viewport tag to `base.html`. After this change, the navbar collap
 <summary>Booking Bug</summary>
 
 **Problem:**  
-Both the Superuser and an regular user could book a tennis court for as many hours as they desired.
+Both the Superuser and a regular user could book a tennis court for as many hours as they desired.
 
 ![Long court booking](booking/static/booking/images/admin_booking_bug1.png)
 
@@ -608,17 +608,17 @@ The live link to the website can be found here: [Play Tennis](https://play-tenni
 
 </details>
 
-## Credit
+## Credits
 
-- I referred to the I Think Therefore I blog project for creating my initial structure and the set up of Django
+- I referred to the I Think Therefore I Blog walkthrough project as a guide for setting up Django and structuring the application.
 - I also followed the same steps for Heroku deployment as directed in the walkthrough project.
 - The Testing Times module was also very useful to support me in creating my automated tests.
 - I used StackOverflow a few times as mentioned in my Bugs section to help me resolve issues.
-- My mentor also supported me when their was an error on my form where the email field was causing a problem with validation. Django expected to find the email field but it was not included leading to the validation to fail.
+- My mentor also supported me when there was an error on my form where the email field was causing a problem with validation. Django expected to find the email field but it was not included leading to the validation to fail.
 
 During development, the following resources were frequently used:
 
-- [Django Documentation](https://docs.djangoproject.com/en/3.2/)
+- [Django Documentation](https://docs.djangoproject.com/en/4.2/)
 - [Bootstrap Documentation](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
 - [W3Schools](https://www.w3schools.com/) — for general troubleshooting and information on features.
-- [ChatGPT](https://chatgpt.com/) — used for explaining framework behaviour and providing examples during development
+- [ChatGPT](https://chatgpt.com/) — used for explaining framework behaviour and providing examples during development.
