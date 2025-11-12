@@ -5,6 +5,12 @@ from django.core.exceptions import ValidationError
 
 
 class BookingForm(forms.ModelForm):
+    """
+    Form for creating or editing a booking.
+
+    Provides fields for selecting court, email, date, start time,
+    and end time. The time fields offer choices between 07:00 and 21:00.
+    """
     TIME_CHOICES = [(time(h, 0), f"{h:02d}:00")for h in range(7, 22)]
 
     start_time = forms.ChoiceField(choices=TIME_CHOICES)
@@ -27,6 +33,7 @@ class BookingForm(forms.ModelForm):
         return selected_date
 
     def __init__(self, *args, **kwargs):
+        """Set user and email if user is provided."""
         self.user = kwargs.pop('user', None)
         super().__init__(*args, **kwargs)
 

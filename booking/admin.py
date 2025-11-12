@@ -5,6 +5,7 @@ from .models import Court, Booking
 
 @admin.register(Court)
 class CourtAdmin(admin.ModelAdmin):
+    """ Admin view for court model """
     list_display = ('name', 'court_type')
     list_filter = ('court_type',)
     search_fields = ('name',)
@@ -12,6 +13,7 @@ class CourtAdmin(admin.ModelAdmin):
 
 @admin.register(Booking)
 class BookingAdmin(admin.ModelAdmin):
+    """ Admin view for booking model """
     list_display = ('name', 'court',
                     'date', 'start_time', 'end_time', 'created_at')
     list_filter = ('court', 'date')

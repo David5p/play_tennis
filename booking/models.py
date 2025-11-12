@@ -7,6 +7,8 @@ from django.contrib.auth.models import User
 
 
 class Court (models.Model):
+    """Represents a tennis court with type and
+    surface attributes."""
     COURT_TYPE_CHOICES = [
         ('indoor', 'Indoor'),
         ('outdoor', 'Outdoor'),
@@ -22,7 +24,8 @@ class Court (models.Model):
         max_length=10, choices=SURFACE_CHOICES, default='hard')
 
     def clean(self):
-        """Custom validation to prevent clay courts from being indoor"""
+        """Custom validation to prevent clay courts
+        from being indoor"""
         if self.court_type == 'indoor' and self.surface_type == 'clay':
             raise ValidationError("Indoor courts are hard courts only.")
 
@@ -32,6 +35,7 @@ class Court (models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
+        """Return a human-readable string representation of the court."""
         return (
             f"{self.name} ({self.get_court_type_display()}) - "
             f"({self.get_surface_type_display()})"
@@ -39,6 +43,7 @@ class Court (models.Model):
 
 
 class Booking(models.Model):
+    """Represents a tennis court booking made by a user."""
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, null=True, blank=True)
     court = models.ForeignKey(
@@ -156,6 +161,7 @@ class Booking(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
+        """Returns a human-readable string describing the booking details."""
         return (
             f"{self.name} - {self.court.name} on {self.date} "
             f"from {self.start_time} to {self.end_time}"

@@ -11,12 +11,15 @@ from .forms import BookingForm
 
 
 def home(request):
+    """Render the home page of the site."""
     return render(request, 'home.html')
 
 
 def user_has_conflicting_booking(user, date, start_time, end_time):
     """
-    Returns True if this user already has a booking at the same time.
+    Returns True if this user already has
+
+    a booking at the same time.
     """
     return Booking.objects.filter(
         user=user,
@@ -28,6 +31,9 @@ def user_has_conflicting_booking(user, date, start_time, end_time):
 
 class CustomLoginView(LoginView):
     def form_valid(self, form):
+        """Custom login view that adds a success message
+
+        upon successful login."""
         messages.success(
             self.request, f"Welcome back, {form.get_user().username}!")
         return super().form_valid(form)
@@ -35,6 +41,9 @@ class CustomLoginView(LoginView):
 
 @login_required
 def logout_view(request):
+    """Log out the current user and redirect to the home
+
+    page with a success message."""
     logout(request)
     messages.success(request, "You have been logged out successfully.")
     return redirect('home')
@@ -42,6 +51,9 @@ def logout_view(request):
 
 @login_required(login_url='login')
 def create_booking(request):
+    """Handle creation of a new court booking,
+
+    preventing double bookings for the same user."""
     if request.method == 'POST':
         form = BookingForm(request.POST, user=request.user)
         if form.is_valid():
@@ -87,6 +99,9 @@ def register(request):
 
 @login_required(login_url='login')
 def my_bookings(request):
+    """Display the logged-in user's upcoming
+
+    and past court bookings."""
     today = timezone.now().date()
     upcoming = Booking.objects.filter(
         user=request.user, date__gte=today).order_by('date')
@@ -100,6 +115,13 @@ def my_bookings(request):
 
 @login_required
 def cancel_booking(request, booking_id):
+    """
+    Cancel an upcoming booking for the logged-in user.
+
+    Prevents cancellation of past bookings.
+    Redirects to 'my_bookings' with a success or error
+    message.
+    """
     if request.method == 'POST':
         booking = get_object_or_404(Booking, id=booking_id, user=request.user)
 
@@ -119,7 +141,12 @@ def cancel_booking(request, booking_id):
 
 @login_required
 def edit_booking(request, booking_id):
-    booking = get_object_or_404(Booking, id=booking_id, user=request.user)
+    """Allow a user to edit an existing upcoming
+
+    booking while preventing edits to past ones."""
+    booking = get_object_or_404(
+        Booking, id=booking_id, user=request.user
+    )
 
     # Prevent cancelling past bookings
     if booking.date < timezone.now().date():
