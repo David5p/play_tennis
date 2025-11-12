@@ -5,12 +5,17 @@
 <div id="court_booking" class="container mt-5">
     <div class="row justify-content-center">
         <div class= "col-md-6 text-center">
+            <!-- Page heading -->
             <h2>Edit Booking</h2>
+            <!-- Display the booking details being edited -->
             <p>Editing booking for <strong>{{ booking.court }}</strong> on <strong>{{ booking.date }}</strong></p>
 
+            <!-- Booking edit form -->
             <form method="POST">
                 {% csrf_token %}
+                <!-- Render the form fields -->
                 {{ form.as_p }}
+                <!-- Submit button to save changes -->
                 <button type="submit" class="btn btn-primary confirm-booking me-3">Save Changes</button>
                 <a href="{% url 'my_bookings' %}" class="btn btn-danger btn-md"><strong>Cancel</strong></a>
             </form>

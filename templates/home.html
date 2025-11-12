@@ -1,17 +1,20 @@
   {% extends "base.html" %}
   {% load static %}
 
+  <!-- Sets the page title in the browser tab -->
   {% block title %}Home - Play Tennis{% endblock %}
 
   {% block content %}
   <div class="hero-section text-white d-flex flex-column justify-content-center align-items-center">
     <div class="container text-center">
       <h1 class="display-3 fw-bold start-title">Welcome to Harton <span class="title">Play Tennis</span></h1>
+      <!-- Call-to-action button linking to the booking page -->
       <section class="opening"><p class="lead">Book your tennis court and start playing today.</p>
       <a href="{% url 'create_booking' %}" class="main-button">Make a Booking</a>
       </section>
   </div>
   </div>
+  <!-- About Section: Introduces the club, its history, and facilities -->
   <section id="about" class="about-section py-5 text-center">
     <div class="container">
       <h2 class="mb-4 display-4"><strong>About Us</strong></h2>

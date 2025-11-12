@@ -5,21 +5,24 @@
 {% block title %}Play Tennis Signup{% endblock %}
 
 {% block content %}
+<!-- Registration section -->
 <section id = "register" class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
+            <!-- Page header -->
             <h1 class="text-center display-5 mb-4">Sign Up to <strong>Play Tennis</strong></h1>
             <p class="lead text-center">Create an account to manage your court bookings.</p>
-
+            <!-- Display Django messages (errors/success) -->
             {% if messages %}
                 {% for message in messages %}
                     <div class="alert alert-{{ message.tags }}">{{ message }}</div>
                 {% endfor %}
             {% endif %}
-
+            <!-- Signup form -->
             <form method="post" novalidate>
                 {% csrf_token %}
                 {{ form|crispy }}  {# Uses crispy forms layout #}
+                <!-- Submit button -->
                 <div class="d-flex justify-content-center">
                 <button class="signup-button" type="submit">Sign Up</button>
                 </div>

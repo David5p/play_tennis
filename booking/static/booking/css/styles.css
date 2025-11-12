@@ -12,7 +12,7 @@ body {
 .logo {
   height: 50px;
   width: auto;
-  max-width: 120px;
+  max-width: 120px; /* Prevents the logo from scaling too large on wide screens */
   border-radius: 8px;
 }
 
@@ -51,17 +51,20 @@ header#navbar {
 
 .hero-section .container {
   position: relative;
-  z-index: 1;
+  z-index: 1; /* z-index means content appears on top of the ::before overlay without affecting other elements. */
 }
+
 h1 {
   font-family: var(--font-primary);
 }
+
 .start-title {
   font-family: var(--font-secondary);
   color: rgba(183, 206, 180);
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.45);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.45); /* Subtle text shadow adds depth and improves readability */
   font-weight: 600;
 }
+
 .title {
   font-family: var(--font-secondary);
   color: rgba(232, 232, 232);
@@ -72,26 +75,35 @@ h1 {
   font-family: var(--font-secondary);
   background-color: rgba(196, 217, 222, 0.8);
 }
+
 .info {
   font-family: var(--font-secondary);
   color: var(--color-text-main);
   font-size: 1.25rem;
   font-weight: bold;
 }
+
 #register,
 #login,
 #court_booking,
 #my_bookings .container {
-  background-color: rgba(196, 217, 222, 0.8);
+  background-color: rgba(
+    196,
+    217,
+    222,
+    0.8
+  ); /* Light semi-transparent background to separate content from page background */
   padding: 2rem;
   border-radius: 0.5rem;
 }
+
 .booking-list .list-group-item {
   background-color: rgba(24, 93, 106, 1);
   color: white;
   border-radius: 8px;
   margin-bottom: 5px; /* spacing between items */
 }
+
 .main-button {
   display: inline-block;
   background-color: rgba(183, 206, 180);
@@ -102,11 +114,12 @@ h1 {
   border-radius: 6px;
   text-decoration: none;
   font-weight: 800;
-  transition: background-color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out; /* Smooth hover transition */
 }
+
 .booking-login {
   display: block;
-  margin: 1rem auto 0 auto; /* top auto bottom */
+  margin: 1rem auto 0 auto;
   padding: 0.5rem 1.2rem;
   background-color: rgba(167, 144, 137, 1);
   color: #000;
@@ -116,6 +129,7 @@ h1 {
   cursor: pointer;
   text-align: center;
 }
+
 .booking-login:hover {
   background-color: rgba(31, 120, 137, 1);
   color: #fff;
@@ -143,12 +157,13 @@ a.user-button {
   color: #000000;
   padding: 0.5rem 1rem;
   border: none;
-  border-radius: 4px;
+  border-radius: 4px /* give rounded corners */;
   text-decoration: none;
   font-weight: 400;
   transition: background-color 0.2s ease-in-out;
   margin-right: 10px;
 }
+
 a.user-button:hover {
   background-color: rgba(196, 217, 222, 0.8);
   color: #000000;
@@ -160,8 +175,8 @@ a.user-button:hover {
   color: #000000;
   padding: 0.5rem 1rem;
   border: none;
-  border-radius: 4px;
-  text-decoration: none;
+  border-radius: 4px /*give rounded corners */;
+  text-decoration: none /* remove any underline */;
   font-weight: 400;
   transition: background-color 0.2s ease-in-out;
 }
@@ -189,21 +204,22 @@ a.user-button:hover {
   font-weight: bolder;
 }
 
-select[name="court"] {
+select[name="court"] /* Prevent form from being too wide on mobile devices */ {
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
 }
 
 ul.errorlist.nonfield {
-  background-color: #ffbf00; /* dark amber background */
-  color: #000; /* black text */
+  background-color: #ffbf00; /* dark amber background for warning messages */
+  color: #000;
   text-align: center;
   padding: 1rem;
   border-radius: 0.25rem;
-  list-style: none; /* remove bullets */
+  list-style: none; /* remove bullet points */
   margin-bottom: 1rem;
 }
+
 #footer {
   background: rgba(200, 200, 200, 1);
   color: #000;
@@ -224,10 +240,10 @@ ul.errorlist.nonfield {
 }
 
 #footer p {
-  overflow-wrap: break-word;
+  overflow-wrap: break-word; /*Prevent email from stretching over background */
 }
 
-/* Adjust spacing in collapsed navbar for login and register buttons */
+/* Adjust spacing in collapsed navbar on smaller devices for login and register buttons */
 @media (max-width: 767.98px) {
   .navbar-nav .nav-item {
     width: 100%; /* Full width for touch targets */
