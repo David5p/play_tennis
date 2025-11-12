@@ -24,7 +24,7 @@ header#navbar {
 
 .hero-section {
   position: relative;
-  background-image: url("../images/main_image_resized.webp"); /* path relative to your CSS file */
+  background-image: url("../images/main_image_resized.395ecc452a78.webp"); /* path relative to your CSS file */
   background-size: cover;
   background-position: center;
   height: 60vh;
