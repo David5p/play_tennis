@@ -570,6 +570,34 @@ web: gunicorn tailors_thimble.wsgi
 2. Commit and push your final code to your GitHub repository.
 3. In Heroku, go to your app’s **Settings** tab and remove the `DISABLE_COLLECTSTATIC` variable from the Config Vars.
 4. Navigate to the **Deploy** tab and scroll down to **Deploy a GitHub branch**.
-5. Select the branch you want to deploy and click **Deploy Branch**. Once deployment completes, the build log should display: _“Your app was successfully deployed”_. Click **View** or **Open App** at the top of the page to open your deployed application in the browser.
+5. Select the branch you want to deploy and click **Deploy Branch**. Once deployment completes, the build log should display: _“Your app was successfully deployed”_. Click **View** at the bottom of the page or **Open App** at the top of the page to open your deployed application in the browser.
+
+</details>
+
+### Forking the GitHub Repository
+
+<details>
+<summary>Steps to Fork the GitHub Repository</summary>
+
+Forking allows you to view and edit the code without affecting the original repository.
+
+1. Find the GitHub repository. Link to the repository can be found [here](https://github.com/David5p/play_tennis).
+2. Click on 'Fork', in the top right-hand corner.
+3. This will take you to your own repository to a fork with the same name as the original branch.
+
+</details>
+
+### Creating a Local Clone
+
+<details>
+<summary>Steps to Creating a Local Clone</summary>
+
+1. Go to the GitHub repository which can be found [here](https://github.com/David5p/play_tennis).
+2. Select 'Code' to the right of the screen. This will lead to a dropdown. Click on HTTPs and copy the link.
+3. Open Git Bash in your integrated development environment (IDE) and change the current working directory to the location where you want the cloned directory.
+4. Type `git clone`, paste the URL you copied earlier, and press Enter to create your local clone.
+
+More information on Creating and Managing repositories can be found [here](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository?versionId=free-pro-team%40latest&productId=repositories&restPage=creating-and-managing-repositories%2Ccloning-a-repository#cloning-a-repository)
+<br>
 
 </details>
