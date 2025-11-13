@@ -1,3 +1,9 @@
+/**
+ * Automatically updates the "end time" dropdown to be
+ * one option after the selected "start time" when the
+ * start time changes.
+ */
+
 document.addEventListener("DOMContentLoaded", function () {
   const startSelect = document.getElementById("id_start_time");
   const endSelect = document.getElementById("id_end_time");
