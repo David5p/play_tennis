@@ -12,7 +12,7 @@ The website features a homepage that introduces the club and allows users to mak
 
 - [Overview](#overview)
 - [Agile Methodology](#agile-methodology)
-- [User Experience (UX)](#user-experience-ux)
+- [User Experience (UX)](#user-experience)
   - [Goals](#goals)
   - [User Stories](#user-stories)
   - [Visual Design](#visual-design)
@@ -528,7 +528,7 @@ DATABASES = {
 ```
 
 5. Save and migrate this database to the connected postgreSQL database. Run the migrate command in the terminal
-   `python3 manage.py migrate`
+   `python manage.py migrate`
 
 ### Connect the Database to Heroku
 

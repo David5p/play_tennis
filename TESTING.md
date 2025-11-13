@@ -153,7 +153,7 @@ The JavaScript code was tested using [JS Hint](https://jshint.com/).
 
 [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/) was used to audit the website for performance, accessibility, best practice and SEO. This was run in Chrome DevTools in incognito mode.
 
-- At the beginning of the Lighthouse testing, I noticed the performace of my website being negated by the high quality of my homepage image.
+- At the beginning of the Lighthouse testing, I noticed the performance of my website being negated by the high quality of my homepage image.
   The performance rating was greatly improved upon the reduction of the file size.
 
 <p align="center">
@@ -231,7 +231,7 @@ The JavaScript code was tested using [JS Hint](https://jshint.com/).
 
 ## Responsiveness Testing
 
-The website is responsive for screens with a mininum width of 320px and a maximum width of 2560px. Friends tested the website on their devices and found the website responsive. Further manual tests were done using [Chrome's DevTools](https://developer.chrome.com/docs/devtools) and the website proved to be responsive.
+The website is responsive for screens with a minimum width of 320px and a maximum width of 2560px. Friends tested the website on their devices and found the website responsive. Further manual tests were done using [Chrome's DevTools](https://developer.chrome.com/docs/devtools) and the website proved to be responsive.
 
 <details>
 

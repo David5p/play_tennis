@@ -6,6 +6,9 @@ from datetime import date, time
 
 class BookingModelTests(TestCase):
     def setUp(self):
+        """
+        Create a test user and a sample Court object for use in tests.
+        """
         self.user = User.objects.create_user(
             username='testuser', password='testpass'
         )
@@ -13,6 +16,10 @@ class BookingModelTests(TestCase):
             name='Court 1', court_type='indoor', surface_type='hard')
 
     def test_time_on_the_hour_validation(self):
+        """
+        Test that Booking objects raise a ValidationError if start_time
+        or end_time are not on the hour.
+        """
         from django.core.exceptions import ValidationError
         booking = Booking(
             user=self.user,
@@ -27,6 +34,10 @@ class BookingModelTests(TestCase):
             booking.full_clean()
 
     def test_valid_booking_saves(self):
+        """
+        Test that a Booking with valid on-the-hour times
+        is saved successfully.
+        """
         booking = Booking(
             user=self.user,
             court=self.court,

@@ -5,6 +5,10 @@ from booking import views
 
 class TestUrls(SimpleTestCase):
     def test_urls_resolve_to_correct_view(self):
+        """
+        Test that named URLs resolve to their 
+        corresponding view functions.
+        """
         url_view_map = {
             'home': views.home,
             'create_booking': views.create_booking,

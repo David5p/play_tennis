@@ -8,6 +8,9 @@ from booking.models import Court
 class BookingFormTests(TestCase):
 
     def setUp(self):
+        """
+        Create a sample Court object for use in tests.
+        """
         self.court = Court.objects.create(
             name="Court 1",
             court_type="indoor",

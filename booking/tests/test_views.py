@@ -8,6 +8,9 @@ from datetime import date, time
 class TestViews(TestCase):
 
     def setUp(self):
+        """
+        Set up test environment with a test client.
+        """
         self.client = Client()
         self.user = User.objects.create_user(
             username='testuser', password='testpass')
